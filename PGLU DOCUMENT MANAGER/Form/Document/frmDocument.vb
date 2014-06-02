@@ -231,7 +231,7 @@ Public Class frmDocument
                         FbSql = "DELETE FROM C_ATTACHMENT WHERE ATTACHMENT_ID = '" & value & "' "
                         FbCommand.CommandText = FbSql
                         FbCommand.ExecuteNonQuery()
-                        Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "DELETE")
+                            Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "UPDATE")
                     End If
                 Next
 
@@ -263,7 +263,7 @@ Public Class frmDocument
                         FbCommand.Parameters.AddWithValue("@FK_DOCUMENTFILE_ID", lblDocumentFileID.Text)
                         FbCommand.Parameters.AddWithValue("@SECURITY_USER", LoggedUser)
                         FbCommand.ExecuteNonQuery()
-                        Call AuditLog("INSERT INTO C_ATTACHMENT(ATTACHMENT_ID,BLOBATTACHMENT,FILENAME,FILETYPE,FK_DOCUMENTFILE_ID,SECURITY_USER) VALUES (" & lstAttachment.Items(intx).SubItems(0).Text & ",BLOB," & lstAttachment.Items(intx).SubItems(2).Text & "," & lstAttachment.Items(intx).SubItems(3).Text & "," & lblDocumentFileID.Text & "," & LoggedUser & ")", TransactionNumber, "INSERT")
+                            Call AuditLog("INSERT INTO C_ATTACHMENT(ATTACHMENT_ID,BLOBATTACHMENT,FILENAME,FILETYPE,FK_DOCUMENTFILE_ID,SECURITY_USER) VALUES (" & lstAttachment.Items(intx).SubItems(0).Text & ",BLOB," & lstAttachment.Items(intx).SubItems(2).Text & "," & lstAttachment.Items(intx).SubItems(3).Text & "," & lblDocumentFileID.Text & "," & LoggedUser & ")", TransactionNumber, "UPDATE")
                     End If
                 Next
                 '''''''''''''''''''''
@@ -313,7 +313,7 @@ Public Class frmDocument
                 FbCommand.ExecuteNonQuery()
                 'Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "INSERT")
                     'Call AuditLog("INSERT INTO C_DOCUMENTFILE(DOCUMENTFILE_ID,BLOBFILE,FILENAME,FILESIZE,FK_DOCUMENT_ID,SECURITY_USER,NOTE) VALUES(" & lblDocumentFileID.Text & ",BLOB," & lblFileName.Text & "," & Format(PDFFileInfo.Length / 1024, "0.00") & "," & GuidID & "," & LoggedUser & "," & txtNote.Text & ")", TransactionNumber, "INSERT")
-                    Call AuditLog("INSERT INTO C_DOCUMENTFILE(DOCUMENTFILE_ID,BLOBFILE,FILENAME,FILESIZE,FK_DOCUMENT_ID,SECURITY_USER,NOTE,OCR) VALUES(" & lblDocumentFileID.Text & ",BLOB," & lblFileName.Text & "," & Format(PDFFileInfo.Length / 1024, "0.00") & "," & GuidID & "," & LoggedUser & "," & txtNote.Text & ",BLOB)", TransactionNumber, "EDIT")
+                    Call AuditLog("INSERT INTO C_DOCUMENTFILE(DOCUMENTFILE_ID,BLOBFILE,FILENAME,FILESIZE,FK_DOCUMENT_ID,SECURITY_USER,NOTE,OCR) VALUES(" & lblDocumentFileID.Text & ",BLOB," & lblFileName.Text & "," & Format(PDFFileInfo.Length / 1024, "0.00") & "," & GuidID & "," & LoggedUser & "," & txtNote.Text & ",BLOB)", TransactionNumber, "UPDATE")
 
                     'INSERT INTO L_TAG TABLE
                     modFunction.SystemStatus("Updating index")
@@ -322,7 +322,7 @@ Public Class frmDocument
                     FbSql = "INSERT INTO L_TAG(FK_DOCUMENTFILE_ID,FK_COLUMNNAME_ID,SECURITY_USER,TEXT) VALUES ('" & lblDocumentFileID.Text & "','" & lstTag.Items(counterX).SubItems(0).Text & "','" & LoggedUser & "','" & lstTag.Items(counterX).SubItems(2).Text & "')"
                     FbCommand.CommandText = FbSql
                     FbCommand.ExecuteNonQuery()
-                    Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "INSERT")
+                        Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "UPDATE")
                     'End If
                 Next
 
@@ -366,7 +366,7 @@ Public Class frmDocument
                         FbCommand.ExecuteNonQuery()
 
                         'Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "INSERT")
-                        Call AuditLog("INSERT INTO C_ATTACHMENT(ATTACHMENT_ID,BLOBATTACHMENT,FILENAME,FILETYPE,FK_DOCUMENTFILE_ID,SECURITY_USER) VALUES (" & lstAttachment.Items(intZ).SubItems(0).Text & ",BLOB," & lstAttachment.Items(intZ).SubItems(2).Text & "," & lstAttachment.Items(intZ).SubItems(3).Text & "," & lblDocumentFileID.Text & "," & LoggedUser & ")", TransactionNumber, "INSERT")
+                            Call AuditLog("INSERT INTO C_ATTACHMENT(ATTACHMENT_ID,BLOBATTACHMENT,FILENAME,FILETYPE,FK_DOCUMENTFILE_ID,SECURITY_USER) VALUES (" & lstAttachment.Items(intZ).SubItems(0).Text & ",BLOB," & lstAttachment.Items(intZ).SubItems(2).Text & "," & lstAttachment.Items(intZ).SubItems(3).Text & "," & lblDocumentFileID.Text & "," & LoggedUser & ")", TransactionNumber, "UPDATE")
                     End If
 
                 Next
@@ -387,7 +387,7 @@ Public Class frmDocument
                     FbCommand.Parameters.AddWithValue("@SECURITY_USER", LoggedUser)
                     FbCommand.ExecuteNonQuery()
                     'Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "INSERT")
-                    Call AuditLog("INSERT INTO C_ATTACHMENT(ATTACHMENT_ID,BLOBATTACHMENT,FILENAME,FILETYPE,FK_DOCUMENTFILE_ID,SECURITY_USER) VALUES (" & GUIDATTACHMENT & ",BLOB," & qrow("FILENAME") & "," & qrow("FILETYPE") & "," & lblDocumentFileID.Text & "," & LoggedUser & ")", TransactionNumber, "INSERT")
+                        Call AuditLog("INSERT INTO C_ATTACHMENT(ATTACHMENT_ID,BLOBATTACHMENT,FILENAME,FILETYPE,FK_DOCUMENTFILE_ID,SECURITY_USER) VALUES (" & GUIDATTACHMENT & ",BLOB," & qrow("FILENAME") & "," & qrow("FILETYPE") & "," & lblDocumentFileID.Text & "," & LoggedUser & ")", TransactionNumber, "UPDATE")
                 Next
 
 

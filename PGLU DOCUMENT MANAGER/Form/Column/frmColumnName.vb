@@ -58,6 +58,7 @@ Public Class frmColumnName
                 FbCommand.CommandText = FbSql
                 FbCommand.ExecuteNonQuery()
                 lblID.Text = GUIDID
+                Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "INSERT")
             Else
                 FbSql = "UPDATE S_COLUMNNAME SET COLUMN_NAME='" & txtColumnName.Text.ToUpper & "',DESCRIPTION='" & txtColumnDescription.Text.ToUpper & "',"
                 FbSql = FbSql & "FK_COLUMNGROUP_ID='" & lblGroupID.Text & "',PRIORITY = " & txtSortNo.Value & ",SECURITY_USER = '" & LoggedUser & "' WHERE "
@@ -65,8 +66,9 @@ Public Class frmColumnName
 
                 FbCommand.CommandText = FbSql
                 FbCommand.ExecuteNonQuery()
+                Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "UPDATE")
             End If
-            Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "UPDATE")
+
             MsgBox("Index successful", vbInformation, My.Application.Info.Title.ToString)
 
         Catch ex As Exception

@@ -22,35 +22,44 @@ Partial Class frmAuditLog
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.dgAudit = New System.Windows.Forms.DataGridView()
-        CType(Me.dgAudit, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.txtRealeaseNote = New System.Windows.Forms.RichTextBox()
+        Me.btnClose = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'dgAudit
+        'txtRealeaseNote
         '
-        Me.dgAudit.AllowUserToAddRows = False
-        Me.dgAudit.AllowUserToDeleteRows = False
-        Me.dgAudit.AllowUserToOrderColumns = True
-        Me.dgAudit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgAudit.Location = New System.Drawing.Point(12, 12)
-        Me.dgAudit.Name = "dgAudit"
-        Me.dgAudit.ReadOnly = True
-        Me.dgAudit.Size = New System.Drawing.Size(825, 359)
-        Me.dgAudit.TabIndex = 0
+        Me.txtRealeaseNote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtRealeaseNote.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtRealeaseNote.Location = New System.Drawing.Point(12, 12)
+        Me.txtRealeaseNote.Name = "txtRealeaseNote"
+        Me.txtRealeaseNote.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
+        Me.txtRealeaseNote.Size = New System.Drawing.Size(421, 419)
+        Me.txtRealeaseNote.TabIndex = 1
+        Me.txtRealeaseNote.Text = ""
+        '
+        'btnClose
+        '
+        Me.btnClose.Location = New System.Drawing.Point(358, 437)
+        Me.btnClose.Name = "btnClose"
+        Me.btnClose.Size = New System.Drawing.Size(75, 23)
+        Me.btnClose.TabIndex = 2
+        Me.btnClose.Text = "Close"
+        Me.btnClose.UseVisualStyleBackColor = True
         '
         'frmAuditLog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(849, 386)
-        Me.Controls.Add(Me.dgAudit)
+        Me.ClientSize = New System.Drawing.Size(445, 469)
+        Me.Controls.Add(Me.btnClose)
+        Me.Controls.Add(Me.txtRealeaseNote)
         Me.Font = New System.Drawing.Font("Calibri", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MaximizeBox = False
         Me.Name = "frmAuditLog"
-        Me.Text = "Audit Log"
-        CType(Me.dgAudit, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Text = "Release Notes"
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents dgAudit As System.Windows.Forms.DataGridView
+    Friend WithEvents txtRealeaseNote As System.Windows.Forms.RichTextBox
+    Friend WithEvents btnClose As System.Windows.Forms.Button
 End Class

@@ -4,7 +4,7 @@
   <description asmv2:iconFile="favicon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="PGLU DOCUMENT ARCHIVING SYSTEM" version="0.9.1.0" language="neutral" processorArchitecture="x86" />
+    <assemblyIdentity name="PGLU DOCUMENT ARCHIVING SYSTEM" version="0.9.9.0" language="neutral" processorArchitecture="x86" />
     <commandLine file="PGLU DOCUMENT ARCHIVING SYSTEM.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -151,14 +151,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PGLU DOCUMENT ARCHIVING SYSTEM.exe" size="802816">
-      <assemblyIdentity name="PGLU DOCUMENT ARCHIVING SYSTEM" version="0.9.1.0" language="neutral" processorArchitecture="x86" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PGLU DOCUMENT ARCHIVING SYSTEM.exe" size="803840">
+      <assemblyIdentity name="PGLU DOCUMENT ARCHIVING SYSTEM" version="0.9.9.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>cbjkbWcOad4CDqeilZdoJHoowpo=</dsig:DigestValue>
+        <dsig:DigestValue>qyQFtuUe1ZZaxqC97mlQhfppeOA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

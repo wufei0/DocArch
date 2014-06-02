@@ -102,6 +102,7 @@ Public Class clsGroupPrivilege
                             FbCommand.CommandText = "INSERT INTO L_COLUMNSECURITY(FK_SECURITY_GROUP,FK_COLUMNGROUP_ID,SECURITY_USER) VALUES ('" & item.Text & "','" & itemb.Text & "','" & LoggedUser & "') "
                             FbCommand.ExecuteNonQuery()
 
+
                           
                             Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "INSERT")
                         Catch ex As Exception

@@ -121,6 +121,7 @@
         Else
             SavePrivilege.PrivilegeSave()
             SavePrivilege.ListviewRefresh("GROUP_PRIVILEGE")
+
         End If
 
 

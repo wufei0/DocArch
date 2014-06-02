@@ -138,13 +138,14 @@ Public Class clsSecurity
                             FbCommand.Parameters.AddWithValue("@USERNAME", .txtUserName.Text)
                             FbCommand.Parameters.AddWithValue("@FK_SECURITY_GROUP", .cboUserGroup.Text)
                             FbCommand.ExecuteNonQuery()
-
+                            Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "INSERT")
                         Else
                             FbCommand.CommandText = "UPDATE SECURITY_USER SET SECURITY_NAME = '" & .txtFullName.Text & "', USERNAME = '" & .txtUserName.Text & "', FK_SECURITY_GROUP = '" & .cboUserGroup.Text & "' WHERE SECURITY_USER_ID = " & .lblid.Text & " "
                             FbCommand.ExecuteNonQuery()
                             .lblid.Text = "SAVED"
+                            Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "UPDATE")
                         End If
-                        Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "UPDATE")
+
 
                         MsgBox("User Saved Successfully.", vbInformation, My.Application.Info.Title.ToString)
 
