@@ -137,7 +137,9 @@ Public Class frmDocument
 
             FbCommand.ExecuteNonQuery()
 
-                Call AuditLog("INSERT INTO C_DOCUMENTFILE(DOCUMENTFILE_ID,BLOBFILE,FILENAME,FILESIZE,FK_DOCUMENT_ID,SECURITY_USER,NOTE,OCR) VALUES(" & lblDocumentFileID.Text & ",BLOB," & lblFileName.Text & "," & Format(PDFFileInfo.Length / 1024, "0.00") & "," & GuidID & "," & LoggedUser & "," & txtNote.Text & ",BLOB)", TransactionNumber, "INSERT")
+                Call AuditLog("INSERT INTO C_DOCUMENTFILE(DOCUMENTFILE_ID,BLOBFILE,FILENAME,FILESIZE," _
+                              & "FK_DOCUMENT_ID,SECURITY_USER,NOTE,OCR) VALUES(" & lblDocumentFileID.Text & ",BLOB," _
+                              & lblFileName.Text & "," & Format(PDFFileInfo.Length / 1024, "0.00") & "," & GuidID & "," & LoggedUser & "," & txtNote.Text & ",BLOB)", TransactionNumber, "INSERT")
 
                 'INSERT INTO L_TAG TABLE
                 modFunction.SystemStatus("Inserting index")
