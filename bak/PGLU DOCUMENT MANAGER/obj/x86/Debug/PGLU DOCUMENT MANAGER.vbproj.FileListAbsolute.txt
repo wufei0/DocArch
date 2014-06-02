@@ -1,0 +1,79 @@
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.frmColumnGroup.resources
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.frmColumnName.resources
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.frmLogin.resources
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.Resources.resources
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.PGLU_Doc_Manager.resources
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU DOCUMENT MANAGER.vbproj.GenerateResource.Cache
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.frmDocument.resources
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\Interop.SHDocVw.dll
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\AxInterop.SHDocVw.dll
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\Interop.SHDocVw.dll
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\AxInterop.SHDocVw.dll
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU DOCUMENT MANAGER.vbproj.ResolveComReference.cache
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\PGLU DOCUMENT ARCHIVING SYSTEM.exe
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\PGLU DOCUMENT ARCHIVING SYSTEM.pdb
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\PGLU DOCUMENT ARCHIVING SYSTEM.xml
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU DOCUMENT ARCHIVING SYSTEM.exe
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU DOCUMENT ARCHIVING SYSTEM.xml
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU DOCUMENT ARCHIVING SYSTEM.pdb
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\Interop.AcroPDFLib.dll
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\AxInterop.AcroPDFLib.dll
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\Interop.AcroPDFLib.dll
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\AxInterop.AcroPDFLib.dll
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\ListViewEx.dll
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU DOCUMENT MANAGER.vbprojResolveAssemblyReference.cache
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.frmDialogueBox.resources
+C:\Users\Computer Name\Documents\Visual Studio 2010\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.frmViewer.resources
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\Interop.AcroPDFLib.dll
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\Interop.SHDocVw.dll
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\AxInterop.AcroPDFLib.dll
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\AxInterop.SHDocVw.dll
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU DOCUMENT MANAGER.vbproj.ResolveComReference.cache
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.frmColumnGroup.resources
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.frmColumnName.resources
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.frmDialogueBox.resources
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.frmDocument.resources
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.frmAbout.resources
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.frmAdvanceSearch.resources
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.frmAuditLog.resources
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.frmLogin.resources
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.frmLog.resources
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.frmSecurity.resources
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.frmViewer.resources
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.frmSecurityDocument.resources
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.frmSecurityGroup.resources
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.frmSecurityPrivilege.resources
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.frmSplash.resources
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.Resources.resources
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU_DOCUMENT_MANAGER.PGLU_Doc_Manager.resources
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU DOCUMENT MANAGER.vbproj.GenerateResource.Cache
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU DOCUMENT ARCHIVING SYSTEM.exe.manifest
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU DOCUMENT ARCHIVING SYSTEM.exe
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU DOCUMENT ARCHIVING SYSTEM.xml
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU DOCUMENT ARCHIVING SYSTEM.pdb
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\PGLU DOCUMENT ARCHIVING SYSTEM.exe.manifest
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\PGLU DOCUMENT ARCHIVING SYSTEM.application
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\PGLU DOCUMENT ARCHIVING SYSTEM.exe
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\PGLU DOCUMENT ARCHIVING SYSTEM.pdb
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\PGLU DOCUMENT ARCHIVING SYSTEM.xml
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\Microsoft.VisualBasic.PowerPacks.Vs.dll
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\System.Data.DataSetExtensions.dll
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\System.Data.dll
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\System.Deployment.dll
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\System.dll
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\System.Drawing.dll
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\System.Windows.Forms.dll
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\System.Xml.dll
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\System.Xml.Linq.dll
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\Microsoft.VisualBasic.PowerPacks.Vs.xml
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\Interop.AcroPDFLib.dll
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\Interop.SHDocVw.dll
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\AxInterop.AcroPDFLib.dll
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\AxInterop.SHDocVw.dll
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU DOCUMENT ARCHIVING SYSTEM.application
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU DOCUMENT ARCHIVING SYSTEM.exe.licenses
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\obj\x86\Debug\PGLU DOCUMENT MANAGER.vbprojResolveAssemblyReference.cache
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\IKVM.Runtime.dll
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\IKVM.OpenJDK.Util.dll
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\commons-logging.dll
+D:\OneDrive\Projects\PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER\bin\Debug\fontbox-1.8.4.dll
