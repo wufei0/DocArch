@@ -15,6 +15,30 @@ PGLUDOCUMENTARCHIVINGSYSTEM
   Overrides the current thread's CurrentUICulture property for all
   resource lookups using this strongly typed resource class.
 </summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources._378x276__1_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.banner">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.banner__1_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.banner1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.banner2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.banners">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.buddy_group">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.

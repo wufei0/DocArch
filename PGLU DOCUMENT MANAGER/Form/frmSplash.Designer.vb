@@ -68,7 +68,7 @@ Partial Class frmSplash
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = Global.PGLU_DOCUMENT_MANAGER.My.Resources.Resources.tj
+        Me.PictureBox1.Image = Global.PGLU_DOCUMENT_MANAGER.My.Resources.Resources._378x276__1_
         Me.PictureBox1.Location = New System.Drawing.Point(-1, -1)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(377, 238)
