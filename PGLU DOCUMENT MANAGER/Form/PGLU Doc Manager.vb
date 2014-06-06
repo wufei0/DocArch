@@ -127,7 +127,8 @@ Public Class PGLU_Doc_Manager
     Private Sub PGLU_Doc_Manager_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         frmSplash.Show()
         frmSplash.Close()
-        Me.Text = My.Application.Info.Title.ToString & " v" & My.Application.Info.Version.ToString
+        'Me.Text = My.Application.Info.Title.ToString & " v" & My.Application.Info.Version.ToString
+
         modFunction.SystemStatus("Log in")
         frmLogin.ShowDialog()
         modFunction.SystemStatus()
@@ -172,13 +173,13 @@ Public Class PGLU_Doc_Manager
             FbCommand = New OdbcCommand
             If chkOCR.Checked = True Then
                 modFunction.SystemStatus("Performing OCR search")
-                FbSql = "SELECT   DOCUMENT_ID,DESCRIPTION,C_DOCUMENTFILE.NOTE,C_DOCUMENT.SECURITY_USER,C_DOCUMENT.TRANSDATE " _
+                FbSql = "SELECT   DOCUMENT_ID,DESCRIPTION,C_DOCUMENTFILE.NOTE,C_DOCUMENT.SECURITY_USER,C_DOCUMENT.TRANSDATE, L_TAG.TEXT " _
                     & "FROM C_DOCUMENT JOIN C_DOCUMENTFILE ON C_DOCUMENT.DOCUMENT_ID = C_DOCUMENTFILE.FK_DOCUMENT_ID JOIN " _
                     & "S_COLUMNGROUP ON C_DOCUMENT.FK_COLUMNGROUP_ID = S_COLUMNGROUP.COLUMNGROUP_ID JOIN L_TAG ON " _
                     & "C_DOCUMENTFILE.DOCUMENTFILE_ID = L_TAG.FK_DOCUMENTFILE_ID WHERE C_DOCUMENTFILE.OCR LIKE '%" & txtSearch.Text.ToLower & "%' " _
                     & " ORDER BY TRANSDATE,FILEHISTORY ASC"
             Else
-                FbSql = "SELECT   DOCUMENT_ID,DESCRIPTION,C_DOCUMENTFILE.NOTE,C_DOCUMENT.SECURITY_USER,C_DOCUMENT.TRANSDATE " _
+                FbSql = "SELECT   DOCUMENT_ID,DESCRIPTION,C_DOCUMENTFILE.NOTE,C_DOCUMENT.SECURITY_USER,C_DOCUMENT.TRANSDATE,L_TAG.TEXT " _
                     & "FROM C_DOCUMENT JOIN C_DOCUMENTFILE ON C_DOCUMENT.DOCUMENT_ID = C_DOCUMENTFILE.FK_DOCUMENT_ID JOIN " _
                     & "S_COLUMNGROUP ON C_DOCUMENT.FK_COLUMNGROUP_ID = S_COLUMNGROUP.COLUMNGROUP_ID JOIN L_TAG ON " _
                     & "C_DOCUMENTFILE.DOCUMENTFILE_ID = L_TAG.FK_DOCUMENTFILE_ID WHERE (L_TAG.TEXT LIKE '" & txtSearch.Text & "%' " _
@@ -197,6 +198,7 @@ Public Class PGLU_Doc_Manager
                         LVitem = New ListViewItem(FbReader!DOCUMENT_ID.ToString)
                         LVitem.SubItems.Add(FbReader!DESCRIPTION.ToString)
                         LVitem.SubItems.Add(FbReader!NOTE.ToString)
+                        LVitem.SubItems.Add(FbReader!TEXT.ToString)
                         LVitem.SubItems.Add(FbReader!SECURITY_USER)
                         LVitem.SubItems.Add(FbReader!TRANSDATE)
                         lstSearch.Items.Add(LVitem)
@@ -206,6 +208,7 @@ Public Class PGLU_Doc_Manager
                     LVitem = New ListViewItem(FbReader!DOCUMENT_ID.ToString)
                     LVitem.SubItems.Add(FbReader!DESCRIPTION.ToString)
                     LVitem.SubItems.Add(FbReader!NOTE.ToString)
+                    LVitem.SubItems.Add(FbReader!TEXT.ToString)
                     LVitem.SubItems.Add(FbReader!SECURITY_USER)
                     LVitem.SubItems.Add(FbReader!TRANSDATE)
                     lstSearch.Items.Add(LVitem)

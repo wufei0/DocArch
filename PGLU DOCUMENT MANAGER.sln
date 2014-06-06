@@ -1,23 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Windows Desktop
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PGLU DOCUMENT MANAGER", "PGLU DOCUMENT MANAGER\PGLU DOCUMENT MANAGER.vbproj", "{6E64BF74-265D-4AAB-A353-2DFC8BF991B2}"
 EndProject
-Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "Setup1", "Setup1\Setup1.isproj", "{000BE9F9-4045-439F-B292-7948BFE06011}"
-EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tjapigo.visualstudio.com/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = PGLU\u0020DOCUMENT\u0020MANAGER\\PGLU\u0020DOCUMENT\u0020MANAGER.vbproj
-		SccProjectName1 = PGLU\u0020DOCUMENT\u0020MANAGER
-		SccLocalPath1 = PGLU\u0020DOCUMENT\u0020MANAGER
-		SccProjectUniqueName2 = Setup1\\Setup1.isproj
-		SccProjectName2 = Setup1
-		SccLocalPath2 = Setup1
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|x86 = CD_ROM|x86
 		Debug|x86 = Debug|x86
@@ -36,16 +22,6 @@ Global
 		{6E64BF74-265D-4AAB-A353-2DFC8BF991B2}.Release|x86.Build.0 = Release|x86
 		{6E64BF74-265D-4AAB-A353-2DFC8BF991B2}.SingleImage|x86.ActiveCfg = Release|x86
 		{6E64BF74-265D-4AAB-A353-2DFC8BF991B2}.SingleImage|x86.Build.0 = Release|x86
-		{000BE9F9-4045-439F-B292-7948BFE06011}.CD_ROM|x86.ActiveCfg = CD_ROM
-		{000BE9F9-4045-439F-B292-7948BFE06011}.CD_ROM|x86.Build.0 = CD_ROM
-		{000BE9F9-4045-439F-B292-7948BFE06011}.Debug|x86.ActiveCfg = DVD-5
-		{000BE9F9-4045-439F-B292-7948BFE06011}.Debug|x86.Build.0 = DVD-5
-		{000BE9F9-4045-439F-B292-7948BFE06011}.DVD-5|x86.ActiveCfg = DVD-5
-		{000BE9F9-4045-439F-B292-7948BFE06011}.DVD-5|x86.Build.0 = DVD-5
-		{000BE9F9-4045-439F-B292-7948BFE06011}.Release|x86.ActiveCfg = SingleImage
-		{000BE9F9-4045-439F-B292-7948BFE06011}.Release|x86.Build.0 = SingleImage
-		{000BE9F9-4045-439F-B292-7948BFE06011}.SingleImage|x86.ActiveCfg = SingleImage
-		{000BE9F9-4045-439F-B292-7948BFE06011}.SingleImage|x86.Build.0 = SingleImage
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

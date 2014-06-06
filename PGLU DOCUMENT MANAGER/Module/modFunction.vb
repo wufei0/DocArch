@@ -151,4 +151,31 @@ Module modFunction
 
 
     End Sub
+    'FUNCTION TO RETRIEVE SYSTEM VERSION AND BUILD DATE
+    'INPUT: N/A
+    'OUTPUT: SYSTEM VERSION AND BUILD DATE
+    Public Function GetVersion() As String
+        Dim fbreader As Odbc.OdbcDataReader = Nothing
+
+        Try
+            FbCommand = New Odbc.OdbcCommand
+            Call modConnection.FBirdConnectionOpen()
+            FbCommand.Connection = FbConnection
+            FbCommand.CommandText = "SELECT FIRST 1 VERSION_MAJOR,VERSION_MINOR,VERSION_BUILD,TRANSDATE FROM SYSTEM_VERSION ORDER BY VERSION_ID DESC"
+            fbreader = FbCommand.ExecuteReader
+            fbreader.Read()
+            Dim buildDate As Date = fbreader!TRANSDATE
+
+            GetVersion = "v" & fbreader!VERSION_MAJOR.ToString() & "." & fbreader!VERSION_MINOR.ToString() & "." & fbreader!VERSION_BUILD.ToString() & " bd." & buildDate.Year & "." & buildDate.Month & "." & buildDate.Day
+            fbreader.Close()
+        Catch ex As Exception
+            GetVersion = Nothing
+        Finally
+            FbCommand.Dispose()
+
+            FbConnection.Close()
+        End Try
+
+        Return GetVersion
+    End Function
 End Module

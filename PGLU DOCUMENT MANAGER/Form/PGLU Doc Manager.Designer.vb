@@ -27,6 +27,7 @@ Partial Class PGLU_Doc_Manager
         Me.MenuStrip = New System.Windows.Forms.MenuStrip()
         Me.MnuDocument = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuDocument_NewDocument = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuDocument_Logout = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuDocument_Exit = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuMaintenance = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuMaintenance_Index = New System.Windows.Forms.ToolStripMenuItem()
@@ -73,7 +74,7 @@ Partial Class PGLU_Doc_Manager
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.mnuDocument_Logout = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.grpSearch.SuspendLayout()
@@ -107,9 +108,14 @@ Partial Class PGLU_Doc_Manager
         Me.mnuDocument_NewDocument.Size = New System.Drawing.Size(156, 22)
         Me.mnuDocument_NewDocument.Text = "New Document"
         '
+        'mnuDocument_Logout
+        '
+        Me.mnuDocument_Logout.Name = "mnuDocument_Logout"
+        Me.mnuDocument_Logout.Size = New System.Drawing.Size(156, 22)
+        Me.mnuDocument_Logout.Text = "Log Out"
+        '
         'mnuDocument_Exit
         '
-        'Me.mnuDocument_Exit.Image = Global.PGLU_DOCUMENT_MANAGER.My.Resources.Resources._exit
         Me.mnuDocument_Exit.Name = "mnuDocument_Exit"
         Me.mnuDocument_Exit.Size = New System.Drawing.Size(156, 22)
         Me.mnuDocument_Exit.Text = "Exit"
@@ -125,26 +131,26 @@ Partial Class PGLU_Doc_Manager
         '
         Me.mnuMaintenance_Index.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuMaintenance_Index_IndexColumn, Me.mnuMaintenance_Index_IndexGroup})
         Me.mnuMaintenance_Index.Name = "mnuMaintenance_Index"
-        Me.mnuMaintenance_Index.Size = New System.Drawing.Size(152, 22)
+        Me.mnuMaintenance_Index.Size = New System.Drawing.Size(132, 22)
         Me.mnuMaintenance_Index.Text = "Index"
         '
         'mnuMaintenance_Index_IndexColumn
         '
         Me.mnuMaintenance_Index_IndexColumn.Name = "mnuMaintenance_Index_IndexColumn"
-        Me.mnuMaintenance_Index_IndexColumn.Size = New System.Drawing.Size(152, 22)
+        Me.mnuMaintenance_Index_IndexColumn.Size = New System.Drawing.Size(148, 22)
         Me.mnuMaintenance_Index_IndexColumn.Text = "Index Column"
         '
         'mnuMaintenance_Index_IndexGroup
         '
         Me.mnuMaintenance_Index_IndexGroup.Name = "mnuMaintenance_Index_IndexGroup"
-        Me.mnuMaintenance_Index_IndexGroup.Size = New System.Drawing.Size(152, 22)
+        Me.mnuMaintenance_Index_IndexGroup.Size = New System.Drawing.Size(148, 22)
         Me.mnuMaintenance_Index_IndexGroup.Text = "Index Group"
         '
         'mnuMaintenance_Security
         '
         Me.mnuMaintenance_Security.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuMaintenance_Security_UserSecurity, Me.mnuMaintenance_Security_DocumentSecurity, Me.mnuMaintenance_Security_AuditTrail})
         Me.mnuMaintenance_Security.Name = "mnuMaintenance_Security"
-        Me.mnuMaintenance_Security.Size = New System.Drawing.Size(152, 22)
+        Me.mnuMaintenance_Security.Size = New System.Drawing.Size(132, 22)
         Me.mnuMaintenance_Security.Text = "Security"
         '
         'mnuMaintenance_Security_UserSecurity
@@ -187,7 +193,7 @@ Partial Class PGLU_Doc_Manager
         'mnuMaintenance_Preference
         '
         Me.mnuMaintenance_Preference.Name = "mnuMaintenance_Preference"
-        Me.mnuMaintenance_Preference.Size = New System.Drawing.Size(152, 22)
+        Me.mnuMaintenance_Preference.Size = New System.Drawing.Size(132, 22)
         Me.mnuMaintenance_Preference.Text = "Preference"
         '
         'ViewMenu
@@ -203,7 +209,7 @@ Partial Class PGLU_Doc_Manager
         Me.ToolBarToolStripMenuItem.CheckOnClick = True
         Me.ToolBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
         Me.ToolBarToolStripMenuItem.Name = "ToolBarToolStripMenuItem"
-        Me.ToolBarToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ToolBarToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.ToolBarToolStripMenuItem.Text = "&Search Bar"
         '
         'StatusBarToolStripMenuItem
@@ -212,7 +218,7 @@ Partial Class PGLU_Doc_Manager
         Me.StatusBarToolStripMenuItem.CheckOnClick = True
         Me.StatusBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
         Me.StatusBarToolStripMenuItem.Name = "StatusBarToolStripMenuItem"
-        Me.StatusBarToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.StatusBarToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.StatusBarToolStripMenuItem.Text = "Status Bar"
         '
         'WindowsMenu
@@ -379,7 +385,7 @@ Partial Class PGLU_Doc_Manager
         'lstSearch
         '
         Me.lstSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lstSearch.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader8, Me.ColumnHeader4, Me.ColumnHeader5})
+        Me.lstSearch.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader8, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5})
         Me.lstSearch.Font = New System.Drawing.Font("Calibri", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lstSearch.FullRowSelect = True
         Me.lstSearch.GridLines = True
@@ -435,11 +441,10 @@ Partial Class PGLU_Doc_Manager
         Me.PictureBox1.TabIndex = 19
         Me.PictureBox1.TabStop = False
         '
-        'mnuDocument_Logout
+        'ColumnHeader3
         '
-        Me.mnuDocument_Logout.Name = "mnuDocument_Logout"
-        Me.mnuDocument_Logout.Size = New System.Drawing.Size(156, 22)
-        Me.mnuDocument_Logout.Text = "Log Out"
+        Me.ColumnHeader3.DisplayIndex = 5
+        Me.ColumnHeader3.Text = "Index"
         '
         'PGLU_Doc_Manager
         '
@@ -456,7 +461,7 @@ Partial Class PGLU_Doc_Manager
         Me.MainMenuStrip = Me.MenuStrip
         Me.Name = "PGLU_Doc_Manager"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "PGLU_Doc_Manager"
+        Me.Text = "DocArch"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.MenuStrip.ResumeLayout(False)
         Me.MenuStrip.PerformLayout()
@@ -519,5 +524,6 @@ Partial Class PGLU_Doc_Manager
     Friend WithEvents chkOCR As System.Windows.Forms.CheckBox
     Friend WithEvents tsStatus As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents mnuDocument_Logout As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
 
 End Class

@@ -138,7 +138,7 @@ Public Class frmLogin
             'Call LoadDate(FBsql)
         End If
 
-
+        PGLU_Doc_Manager.Text = "DocArch " & modFunction.GetVersion
 
 
     End Sub
@@ -153,6 +153,7 @@ Public Class frmLogin
 
         txtuser.Text = "user1"
         txtpassword.Text = "USER1"
+        '
     End Sub
 
    
