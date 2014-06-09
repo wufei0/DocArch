@@ -96,9 +96,7 @@ Public Class PGLU_Doc_Manager
 
   
 
-    Private Sub PGLU_Doc_Manager_FontChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.FontChanged
-
-    End Sub
+    
 
     Private Sub PGLU_Doc_Manager_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         Dim hostname As IPHostEntry = Dns.GetHostEntry(System.Net.Dns.GetHostName())
@@ -173,27 +171,32 @@ Public Class PGLU_Doc_Manager
             FbCommand = New OdbcCommand
             If chkOCR.Checked = True Then
                 modFunction.SystemStatus("Performing OCR search")
-                FbSql = "SELECT   DOCUMENT_ID,DESCRIPTION,C_DOCUMENTFILE.NOTE,C_DOCUMENT.SECURITY_USER,C_DOCUMENT.TRANSDATE, L_TAG.TEXT " _
+                FbSql = "SELECT   DOCUMENT_ID,DESCRIPTION,C_DOCUMENTFILE.NOTE,C_DOCUMENT.SECURITY_USER,C_DOCUMENTFILE.TRANSDATE, L_TAG.TEXT,C_DOCUMENTFILE.DOCUMENTFILE_ID " _
                     & "FROM C_DOCUMENT JOIN C_DOCUMENTFILE ON C_DOCUMENT.DOCUMENT_ID = C_DOCUMENTFILE.FK_DOCUMENT_ID JOIN " _
                     & "S_COLUMNGROUP ON C_DOCUMENT.FK_COLUMNGROUP_ID = S_COLUMNGROUP.COLUMNGROUP_ID JOIN L_TAG ON " _
                     & "C_DOCUMENTFILE.DOCUMENTFILE_ID = L_TAG.FK_DOCUMENTFILE_ID WHERE C_DOCUMENTFILE.OCR LIKE '%" & txtSearch.Text.ToLower & "%' " _
-                    & " ORDER BY TRANSDATE,FILEHISTORY ASC"
+                    & " ORDER BY DOCUMENT_ID,transdate DESC"
             Else
-                FbSql = "SELECT   DOCUMENT_ID,DESCRIPTION,C_DOCUMENTFILE.NOTE,C_DOCUMENT.SECURITY_USER,C_DOCUMENT.TRANSDATE,L_TAG.TEXT " _
+                FbSql = "SELECT   DOCUMENT_ID,DESCRIPTION,C_DOCUMENTFILE.NOTE,C_DOCUMENT.SECURITY_USER,C_DOCUMENTFILE.TRANSDATE,L_TAG.TEXT,C_DOCUMENTFILE.DOCUMENTFILE_ID " _
                     & "FROM C_DOCUMENT JOIN C_DOCUMENTFILE ON C_DOCUMENT.DOCUMENT_ID = C_DOCUMENTFILE.FK_DOCUMENT_ID JOIN " _
                     & "S_COLUMNGROUP ON C_DOCUMENT.FK_COLUMNGROUP_ID = S_COLUMNGROUP.COLUMNGROUP_ID JOIN L_TAG ON " _
                     & "C_DOCUMENTFILE.DOCUMENTFILE_ID = L_TAG.FK_DOCUMENTFILE_ID WHERE (L_TAG.TEXT LIKE '" & txtSearch.Text & "%' " _
                     & "OR S_COLUMNGROUP.DESCRIPTION LIKE '%" & txtSearch.Text & "%' OR C_DOCUMENTFILE.NOTE LIKE '%" & txtSearch.Text & "%' OR " _
                     & "C_DOCUMENTFILE.SECURITY_USER LIKE '" & txtSearch.Text & "%') AND S_COLUMNGROUP.COLUMNGROUP_ID IN " _
-                    & "(SELECT FK_COLUMNGROUP_ID FROM L_COLUMNSECURITY WHERE FK_SECURITY_GROUP = '" & Security_Group & "') ORDER BY TRANSDATE,FILEHISTORY ASC"
+                    & "(SELECT FK_COLUMNGROUP_ID FROM L_COLUMNSECURITY WHERE FK_SECURITY_GROUP = '" & Security_Group & "') ORDER BY DOCUMENT_ID,transdate DESC"
             End If
             FbCommand.Connection = FbConnection
             FbCommand.CommandText = FbSql
             FbReader = FbCommand.ExecuteReader
             Dim counterX As Integer = 0
+            Dim docfileid As String = Nothing
             While FbReader.Read
                 If counterX <> 0 Then
                     If FbReader!DOCUMENT_ID.ToString = lstSearch.Items(counterX - 1).Text Then
+                        If FbReader!text.ToString <> "" And docfileid = FbReader!DOCUMENTFILE_ID.ToString Then
+                            lstSearch.Items(counterX - 1).SubItems(3).Text = lstSearch.Items(counterX - 1).SubItems(3).Text & " | " & FbReader!TEXT.ToString
+                        End If
+
                     Else
                         LVitem = New ListViewItem(FbReader!DOCUMENT_ID.ToString)
                         LVitem.SubItems.Add(FbReader!DESCRIPTION.ToString)
@@ -203,6 +206,7 @@ Public Class PGLU_Doc_Manager
                         LVitem.SubItems.Add(FbReader!TRANSDATE)
                         lstSearch.Items.Add(LVitem)
                         counterX = counterX + 1
+                        docfileid = FbReader!DOCUMENTFILE_ID.ToString
                     End If
                 Else
                     LVitem = New ListViewItem(FbReader!DOCUMENT_ID.ToString)
@@ -213,6 +217,7 @@ Public Class PGLU_Doc_Manager
                     LVitem.SubItems.Add(FbReader!TRANSDATE)
                     lstSearch.Items.Add(LVitem)
                     counterX = counterX + 1
+                    docfileid = FbReader!DOCUMENTFILE_ID.ToString
                 End If
 
             End While
@@ -486,26 +491,10 @@ Public Class PGLU_Doc_Manager
 
 
 
-    Private Sub lstSearch_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstSearch.SelectedIndexChanged
-
-    End Sub
-
-    Private Sub SecurityToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
-    Private Sub DocumentToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MnuDocument.Click
-
-    End Sub
-
-  
-
-  
-
-   
 
 
-    
+
+
 
     Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem.Click
         frmAbout.ShowDialog()
@@ -544,7 +533,7 @@ Public Class PGLU_Doc_Manager
 
     End Sub
 
-   
+
 
     Private Sub mnuMaintenance_Index_IndexColumn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuMaintenance_Index_IndexColumn.Click
         frmColumnName.Show()
@@ -566,7 +555,7 @@ Public Class PGLU_Doc_Manager
         frmLog.Show()
     End Sub
 
-  
+
     Private Sub mnuMaintenance_Security_UserSecurity_User_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuMaintenance_Security_UserSecurity_User.Click
         frmSecurityGroup.tabSecurity.SelectTab(0)
         Dim RefreshLIstview As New clsSecurity
@@ -595,7 +584,7 @@ Public Class PGLU_Doc_Manager
         frmSecurityPrivilege.Show()
     End Sub
 
-  
+
     Private Sub mnuDocument_NewDocument_MouseHover(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuDocument_NewDocument.MouseHover
         modFunction.SystemStatus("Create new document")
     End Sub

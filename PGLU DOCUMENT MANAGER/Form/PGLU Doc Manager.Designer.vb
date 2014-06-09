@@ -70,11 +70,11 @@ Partial Class PGLU_Doc_Manager
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.grpSearch.SuspendLayout()
@@ -411,6 +411,10 @@ Partial Class PGLU_Doc_Manager
         '
         Me.ColumnHeader8.Text = "Note"
         '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "Index"
+        '
         'ColumnHeader4
         '
         Me.ColumnHeader4.Text = "User"
@@ -440,11 +444,6 @@ Partial Class PGLU_Doc_Manager
         Me.PictureBox1.Size = New System.Drawing.Size(2, 475)
         Me.PictureBox1.TabIndex = 19
         Me.PictureBox1.TabStop = False
-        '
-        'ColumnHeader3
-        '
-        Me.ColumnHeader3.DisplayIndex = 5
-        Me.ColumnHeader3.Text = "Index"
         '
         'PGLU_Doc_Manager
         '
