@@ -26,21 +26,7 @@ Partial Class PGLU_Doc_Manager
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PGLU_Doc_Manager))
         Me.MenuStrip = New System.Windows.Forms.MenuStrip()
         Me.MnuDocument = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuDocument_NewDocument = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuDocument_Logout = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuDocument_Exit = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuMaintenance = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuMaintenance_Index = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuMaintenance_Index_IndexColumn = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuMaintenance_Index_IndexGroup = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuMaintenance_Security = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuMaintenance_Security_UserSecurity = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuMaintenance_Security_UserSecurity_User = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuMaintenance_Security_UserSecurity_Group = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuMaintenance_Security_UserSecurity_Privilege = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuMaintenance_Security_DocumentSecurity = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuMaintenance_Security_AuditTrail = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuMaintenance_Preference = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolBarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusBarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -50,10 +36,8 @@ Partial Class PGLU_Doc_Manager
         Me.TileVerticalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TileHorizontalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ArrangeIconsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CloseAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.AuditLogToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TSDatabase = New System.Windows.Forms.ToolStripStatusLabel()
@@ -75,6 +59,22 @@ Partial Class PGLU_Doc_Manager
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.mnuDocument_NewDocument = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuDocument_Logout = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuDocument_Exit = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuMaintenance_Index = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuMaintenance_Index_IndexColumn = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuMaintenance_Index_IndexGroup = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuMaintenance_Security = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuMaintenance_Security_UserSecurity = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuMaintenance_Security_UserSecurity_User = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuMaintenance_Security_UserSecurity_Group = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuMaintenance_Security_UserSecurity_Privilege = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuMaintenance_Security_DocumentSecurity = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuMaintenance_Security_AuditTrail = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuMaintenance_Preference = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CloseAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.grpSearch.SuspendLayout()
@@ -101,100 +101,12 @@ Partial Class PGLU_Doc_Manager
         Me.MnuDocument.Size = New System.Drawing.Size(74, 20)
         Me.MnuDocument.Text = "Document"
         '
-        'mnuDocument_NewDocument
-        '
-        Me.mnuDocument_NewDocument.Image = CType(resources.GetObject("mnuDocument_NewDocument.Image"), System.Drawing.Image)
-        Me.mnuDocument_NewDocument.Name = "mnuDocument_NewDocument"
-        Me.mnuDocument_NewDocument.Size = New System.Drawing.Size(156, 22)
-        Me.mnuDocument_NewDocument.Text = "New Document"
-        '
-        'mnuDocument_Logout
-        '
-        Me.mnuDocument_Logout.Name = "mnuDocument_Logout"
-        Me.mnuDocument_Logout.Size = New System.Drawing.Size(156, 22)
-        Me.mnuDocument_Logout.Text = "Log Out"
-        '
-        'mnuDocument_Exit
-        '
-        Me.mnuDocument_Exit.Name = "mnuDocument_Exit"
-        Me.mnuDocument_Exit.Size = New System.Drawing.Size(156, 22)
-        Me.mnuDocument_Exit.Text = "Exit"
-        '
         'mnuMaintenance
         '
         Me.mnuMaintenance.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuMaintenance_Index, Me.mnuMaintenance_Security, Me.mnuMaintenance_Preference})
         Me.mnuMaintenance.Name = "mnuMaintenance"
         Me.mnuMaintenance.Size = New System.Drawing.Size(91, 20)
         Me.mnuMaintenance.Text = "Maintenance"
-        '
-        'mnuMaintenance_Index
-        '
-        Me.mnuMaintenance_Index.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuMaintenance_Index_IndexColumn, Me.mnuMaintenance_Index_IndexGroup})
-        Me.mnuMaintenance_Index.Name = "mnuMaintenance_Index"
-        Me.mnuMaintenance_Index.Size = New System.Drawing.Size(132, 22)
-        Me.mnuMaintenance_Index.Text = "Index"
-        '
-        'mnuMaintenance_Index_IndexColumn
-        '
-        Me.mnuMaintenance_Index_IndexColumn.Name = "mnuMaintenance_Index_IndexColumn"
-        Me.mnuMaintenance_Index_IndexColumn.Size = New System.Drawing.Size(148, 22)
-        Me.mnuMaintenance_Index_IndexColumn.Text = "Index Column"
-        '
-        'mnuMaintenance_Index_IndexGroup
-        '
-        Me.mnuMaintenance_Index_IndexGroup.Name = "mnuMaintenance_Index_IndexGroup"
-        Me.mnuMaintenance_Index_IndexGroup.Size = New System.Drawing.Size(148, 22)
-        Me.mnuMaintenance_Index_IndexGroup.Text = "Index Group"
-        '
-        'mnuMaintenance_Security
-        '
-        Me.mnuMaintenance_Security.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuMaintenance_Security_UserSecurity, Me.mnuMaintenance_Security_DocumentSecurity, Me.mnuMaintenance_Security_AuditTrail})
-        Me.mnuMaintenance_Security.Name = "mnuMaintenance_Security"
-        Me.mnuMaintenance_Security.Size = New System.Drawing.Size(132, 22)
-        Me.mnuMaintenance_Security.Text = "Security"
-        '
-        'mnuMaintenance_Security_UserSecurity
-        '
-        Me.mnuMaintenance_Security_UserSecurity.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuMaintenance_Security_UserSecurity_User, Me.mnuMaintenance_Security_UserSecurity_Group, Me.mnuMaintenance_Security_UserSecurity_Privilege})
-        Me.mnuMaintenance_Security_UserSecurity.Name = "mnuMaintenance_Security_UserSecurity"
-        Me.mnuMaintenance_Security_UserSecurity.Size = New System.Drawing.Size(174, 22)
-        Me.mnuMaintenance_Security_UserSecurity.Text = "User Security"
-        '
-        'mnuMaintenance_Security_UserSecurity_User
-        '
-        Me.mnuMaintenance_Security_UserSecurity_User.Name = "mnuMaintenance_Security_UserSecurity_User"
-        Me.mnuMaintenance_Security_UserSecurity_User.Size = New System.Drawing.Size(157, 22)
-        Me.mnuMaintenance_Security_UserSecurity_User.Text = "User"
-        '
-        'mnuMaintenance_Security_UserSecurity_Group
-        '
-        Me.mnuMaintenance_Security_UserSecurity_Group.Name = "mnuMaintenance_Security_UserSecurity_Group"
-        Me.mnuMaintenance_Security_UserSecurity_Group.Size = New System.Drawing.Size(157, 22)
-        Me.mnuMaintenance_Security_UserSecurity_Group.Text = "Group"
-        '
-        'mnuMaintenance_Security_UserSecurity_Privilege
-        '
-        Me.mnuMaintenance_Security_UserSecurity_Privilege.Name = "mnuMaintenance_Security_UserSecurity_Privilege"
-        Me.mnuMaintenance_Security_UserSecurity_Privilege.Size = New System.Drawing.Size(157, 22)
-        Me.mnuMaintenance_Security_UserSecurity_Privilege.Text = "Group Privilege"
-        '
-        'mnuMaintenance_Security_DocumentSecurity
-        '
-        Me.mnuMaintenance_Security_DocumentSecurity.Name = "mnuMaintenance_Security_DocumentSecurity"
-        Me.mnuMaintenance_Security_DocumentSecurity.Size = New System.Drawing.Size(174, 22)
-        Me.mnuMaintenance_Security_DocumentSecurity.Text = "Document Security"
-        '
-        'mnuMaintenance_Security_AuditTrail
-        '
-        Me.mnuMaintenance_Security_AuditTrail.Name = "mnuMaintenance_Security_AuditTrail"
-        Me.mnuMaintenance_Security_AuditTrail.Size = New System.Drawing.Size(174, 22)
-        Me.mnuMaintenance_Security_AuditTrail.Text = "Audit Trail"
-        '
-        'mnuMaintenance_Preference
-        '
-        Me.mnuMaintenance_Preference.Name = "mnuMaintenance_Preference"
-        Me.mnuMaintenance_Preference.Size = New System.Drawing.Size(132, 22)
-        Me.mnuMaintenance_Preference.Text = "Preference"
         '
         'ViewMenu
         '
@@ -258,12 +170,6 @@ Partial Class PGLU_Doc_Manager
         Me.ArrangeIconsToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
         Me.ArrangeIconsToolStripMenuItem.Text = "&Arrange Icons"
         '
-        'CloseAllToolStripMenuItem
-        '
-        Me.CloseAllToolStripMenuItem.Name = "CloseAllToolStripMenuItem"
-        Me.CloseAllToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
-        Me.CloseAllToolStripMenuItem.Text = "C&lose All"
-        '
         'HelpMenu
         '
         Me.HelpMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AuditLogToolStripMenuItem, Me.AboutToolStripMenuItem})
@@ -273,15 +179,10 @@ Partial Class PGLU_Doc_Manager
         '
         'AuditLogToolStripMenuItem
         '
+        Me.AuditLogToolStripMenuItem.Image = Global.PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Umut_Pulat_Tulliana_2_Log
         Me.AuditLogToolStripMenuItem.Name = "AuditLogToolStripMenuItem"
-        Me.AuditLogToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
+        Me.AuditLogToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.AuditLogToolStripMenuItem.Text = "Audit Log"
-        '
-        'AboutToolStripMenuItem
-        '
-        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(124, 22)
-        Me.AboutToolStripMenuItem.Text = "About"
         '
         'StatusStrip
         '
@@ -414,6 +315,7 @@ Partial Class PGLU_Doc_Manager
         'ColumnHeader3
         '
         Me.ColumnHeader3.Text = "Index"
+        Me.ColumnHeader3.Width = 130
         '
         'ColumnHeader4
         '
@@ -444,6 +346,121 @@ Partial Class PGLU_Doc_Manager
         Me.PictureBox1.Size = New System.Drawing.Size(2, 475)
         Me.PictureBox1.TabIndex = 19
         Me.PictureBox1.TabStop = False
+        '
+        'mnuDocument_NewDocument
+        '
+        Me.mnuDocument_NewDocument.Image = CType(resources.GetObject("mnuDocument_NewDocument.Image"), System.Drawing.Image)
+        Me.mnuDocument_NewDocument.Name = "mnuDocument_NewDocument"
+        Me.mnuDocument_NewDocument.Size = New System.Drawing.Size(156, 22)
+        Me.mnuDocument_NewDocument.Text = "New Document"
+        '
+        'mnuDocument_Logout
+        '
+        Me.mnuDocument_Logout.Image = Global.PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Graphicloads_100_Flat_2_Inside_logout
+        Me.mnuDocument_Logout.Name = "mnuDocument_Logout"
+        Me.mnuDocument_Logout.Size = New System.Drawing.Size(156, 22)
+        Me.mnuDocument_Logout.Text = "Log Out"
+        '
+        'mnuDocument_Exit
+        '
+        Me.mnuDocument_Exit.Image = Global.PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Hopstarter_Sleek_Xp_Basic_Close_2
+        Me.mnuDocument_Exit.Name = "mnuDocument_Exit"
+        Me.mnuDocument_Exit.Size = New System.Drawing.Size(156, 22)
+        Me.mnuDocument_Exit.Text = "Exit"
+        '
+        'mnuMaintenance_Index
+        '
+        Me.mnuMaintenance_Index.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuMaintenance_Index_IndexColumn, Me.mnuMaintenance_Index_IndexGroup})
+        Me.mnuMaintenance_Index.Image = Global.PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Everaldo_Crystal_Clear_App_help_index
+        Me.mnuMaintenance_Index.Name = "mnuMaintenance_Index"
+        Me.mnuMaintenance_Index.Size = New System.Drawing.Size(132, 22)
+        Me.mnuMaintenance_Index.Text = "Index"
+        '
+        'mnuMaintenance_Index_IndexColumn
+        '
+        Me.mnuMaintenance_Index_IndexColumn.Image = Global.PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Custom_Icon_Design_Pretty_Office_8_Text_columns
+        Me.mnuMaintenance_Index_IndexColumn.Name = "mnuMaintenance_Index_IndexColumn"
+        Me.mnuMaintenance_Index_IndexColumn.Size = New System.Drawing.Size(148, 22)
+        Me.mnuMaintenance_Index_IndexColumn.Text = "Index Column"
+        '
+        'mnuMaintenance_Index_IndexGroup
+        '
+        Me.mnuMaintenance_Index_IndexGroup.Image = Global.PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Everaldo_Kids_Icons_View_multi_column__1_
+        Me.mnuMaintenance_Index_IndexGroup.Name = "mnuMaintenance_Index_IndexGroup"
+        Me.mnuMaintenance_Index_IndexGroup.Size = New System.Drawing.Size(148, 22)
+        Me.mnuMaintenance_Index_IndexGroup.Text = "Index Group"
+        '
+        'mnuMaintenance_Security
+        '
+        Me.mnuMaintenance_Security.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuMaintenance_Security_UserSecurity, Me.mnuMaintenance_Security_DocumentSecurity, Me.mnuMaintenance_Security_AuditTrail})
+        Me.mnuMaintenance_Security.Image = Global.PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Designcontest_Ecommerce_Business_Security
+        Me.mnuMaintenance_Security.Name = "mnuMaintenance_Security"
+        Me.mnuMaintenance_Security.Size = New System.Drawing.Size(132, 22)
+        Me.mnuMaintenance_Security.Text = "Security"
+        '
+        'mnuMaintenance_Security_UserSecurity
+        '
+        Me.mnuMaintenance_Security_UserSecurity.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuMaintenance_Security_UserSecurity_User, Me.mnuMaintenance_Security_UserSecurity_Group, Me.mnuMaintenance_Security_UserSecurity_Privilege})
+        Me.mnuMaintenance_Security_UserSecurity.Image = Global.PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Icons_Land_Vista_Hardware_Devices_Security_Camera
+        Me.mnuMaintenance_Security_UserSecurity.Name = "mnuMaintenance_Security_UserSecurity"
+        Me.mnuMaintenance_Security_UserSecurity.Size = New System.Drawing.Size(174, 22)
+        Me.mnuMaintenance_Security_UserSecurity.Text = "User Security"
+        '
+        'mnuMaintenance_Security_UserSecurity_User
+        '
+        Me.mnuMaintenance_Security_UserSecurity_User.Image = Global.PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Aha_Soft_Free_Large_Boss_Security
+        Me.mnuMaintenance_Security_UserSecurity_User.Name = "mnuMaintenance_Security_UserSecurity_User"
+        Me.mnuMaintenance_Security_UserSecurity_User.Size = New System.Drawing.Size(157, 22)
+        Me.mnuMaintenance_Security_UserSecurity_User.Text = "User"
+        '
+        'mnuMaintenance_Security_UserSecurity_Group
+        '
+        Me.mnuMaintenance_Security_UserSecurity_Group.Image = Global.PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Hopstarter_Sleek_Xp_Basic_User_Group
+        Me.mnuMaintenance_Security_UserSecurity_Group.Name = "mnuMaintenance_Security_UserSecurity_Group"
+        Me.mnuMaintenance_Security_UserSecurity_Group.Size = New System.Drawing.Size(157, 22)
+        Me.mnuMaintenance_Security_UserSecurity_Group.Text = "Group"
+        '
+        'mnuMaintenance_Security_UserSecurity_Privilege
+        '
+        Me.mnuMaintenance_Security_UserSecurity_Privilege.Image = Global.PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Icons_Land_Vista_People_Groups_Military_Personnel_Dark
+        Me.mnuMaintenance_Security_UserSecurity_Privilege.Name = "mnuMaintenance_Security_UserSecurity_Privilege"
+        Me.mnuMaintenance_Security_UserSecurity_Privilege.Size = New System.Drawing.Size(157, 22)
+        Me.mnuMaintenance_Security_UserSecurity_Privilege.Text = "Group Privilege"
+        '
+        'mnuMaintenance_Security_DocumentSecurity
+        '
+        Me.mnuMaintenance_Security_DocumentSecurity.Image = Global.PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Dario_Arnaez_Genesis_3G_User_Files
+        Me.mnuMaintenance_Security_DocumentSecurity.Name = "mnuMaintenance_Security_DocumentSecurity"
+        Me.mnuMaintenance_Security_DocumentSecurity.Size = New System.Drawing.Size(174, 22)
+        Me.mnuMaintenance_Security_DocumentSecurity.Text = "Document Security"
+        '
+        'mnuMaintenance_Security_AuditTrail
+        '
+        Me.mnuMaintenance_Security_AuditTrail.Image = Global.PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Everaldo_Crystal_Clear_App_edit
+        Me.mnuMaintenance_Security_AuditTrail.Name = "mnuMaintenance_Security_AuditTrail"
+        Me.mnuMaintenance_Security_AuditTrail.Size = New System.Drawing.Size(174, 22)
+        Me.mnuMaintenance_Security_AuditTrail.Text = "Audit Trail"
+        '
+        'mnuMaintenance_Preference
+        '
+        Me.mnuMaintenance_Preference.Image = Global.PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Double_J_Design_Ravenna_3d_Settings
+        Me.mnuMaintenance_Preference.Name = "mnuMaintenance_Preference"
+        Me.mnuMaintenance_Preference.Size = New System.Drawing.Size(132, 22)
+        Me.mnuMaintenance_Preference.Text = "Preference"
+        '
+        'CloseAllToolStripMenuItem
+        '
+        Me.CloseAllToolStripMenuItem.Image = Global.PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Hopstarter_Soft_Scraps_File_Delete
+        Me.CloseAllToolStripMenuItem.Name = "CloseAllToolStripMenuItem"
+        Me.CloseAllToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.CloseAllToolStripMenuItem.Text = "C&lose All"
+        '
+        'AboutToolStripMenuItem
+        '
+        Me.AboutToolStripMenuItem.Image = Global.PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Oxygen_Icons_org_Oxygen_Actions_help_about
+        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AboutToolStripMenuItem.Text = "About"
         '
         'PGLU_Doc_Manager
         '

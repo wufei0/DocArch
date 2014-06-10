@@ -356,11 +356,30 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="Resources\Umut-Pulat-Tulliana-2-Log.ico" />
+    <None Include="Resources\Hopstarter-Soft-Scraps-File-Delete.ico" />
+    <None Include="Resources\Hopstarter-Button-Button-Cancel.ico" />
+    <None Include="Resources\Everaldo-Kids-Icons-View-multi-column %281%29.ico" />
+    <None Include="Resources\Icons-Land-Vista-People-Groups-Military-Personnel-Dark.ico" />
+    <None Include="Resources\Hopstarter-Sleek-Xp-Basic-User-Group.ico" />
+    <None Include="Resources\Icons-Land-Vista-Hardware-Devices-Security-Camera.ico" />
+    <None Include="Resources\Everaldo-Crystal-Clear-App-edit.ico" />
+    <None Include="Resources\Pelfusion-Flat-File-Type-Log.ico" />
+    <None Include="Resources\Oxygen-Icons.org-Oxygen-Actions-help-about.ico" />
+    <None Include="Resources\Double-J-Design-Ravenna-3d-Settings.ico" />
+    <None Include="Resources\Martz90-Circle-Settings.ico" />
+    <None Include="Resources\Everaldo-Crystal-Clear-App-help-index.ico" />
+    <None Include="Resources\Graphicloads-100-Flat-2-Inside-logout.ico" />
+    <None Include="Resources\Hopstarter-Sleek-Xp-Basic-Close-2.ico" />
     <None Include="Resources\banner [1].gif" />
     <None Include="Resources\banners.gif" />
     <None Include="Resources\banner.gif" />
     <None Include="Resources\banner.png" />
     <None Include="Resources\378x276 [1].jpg" />
+    <None Include="Resources\Designcontest-Ecommerce-Business-Security.ico" />
+    <None Include="Resources\Dario-Arnaez-Genesis-3G-User-Files.ico" />
+    <None Include="Resources\Aha-Soft-Free-Large-Boss-Security.ico" />
+    <None Include="Resources\Custom-Icon-Design-Pretty-Office-8-Text-columns.ico" />
     <Content Include="Resources\document.ico" />
     <None Include="Resources\tj.jpg" />
     <None Include="Resources\splash screen.jpg" />

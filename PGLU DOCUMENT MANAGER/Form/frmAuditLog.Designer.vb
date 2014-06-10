@@ -22,6 +22,7 @@ Partial Class frmAuditLog
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAuditLog))
         Me.txtRealeaseNote = New System.Windows.Forms.RichTextBox()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.SuspendLayout()
@@ -54,6 +55,7 @@ Partial Class frmAuditLog
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.txtRealeaseNote)
         Me.Font = New System.Drawing.Font("Calibri", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "frmAuditLog"
         Me.Text = "Release Notes"
