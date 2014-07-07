@@ -78,6 +78,7 @@ Partial Class frmDocument
         Me.btnPrint = New System.Windows.Forms.Button()
         Me.btnRollback = New System.Windows.Forms.Button()
         Me.fbAttachment = New System.Windows.Forms.FolderBrowserDialog()
+        Me.ColumnHeader12 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         CType(Me.axDocument, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.TabDocument.SuspendLayout()
@@ -260,7 +261,7 @@ Partial Class frmDocument
         '
         'lstTag
         '
-        Me.lstTag.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader7, Me.ColumnHeader8, Me.ColumnHeader9})
+        Me.lstTag.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader7, Me.ColumnHeader8, Me.ColumnHeader9, Me.ColumnHeader12})
         Me.lstTag.ContextMenuStrip = Me.cmsIndex
         Me.lstTag.FullRowSelect = True
         Me.lstTag.GridLines = True
@@ -284,7 +285,7 @@ Partial Class frmDocument
         'ColumnHeader9
         '
         Me.ColumnHeader9.Text = "Text"
-        Me.ColumnHeader9.Width = 180
+        Me.ColumnHeader9.Width = 120
         '
         'cmsIndex
         '
@@ -541,6 +542,11 @@ Partial Class frmDocument
         Me.btnRollback.UseVisualStyleBackColor = True
         Me.btnRollback.Visible = False
         '
+        'ColumnHeader12
+        '
+        Me.ColumnHeader12.Text = "Description"
+        Me.ColumnHeader12.Width = 90
+        '
         'frmDocument
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -633,4 +639,5 @@ Partial Class frmDocument
     Friend WithEvents cmsIndex_Insert As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents cmsIndex_Delete As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents cmsAttachment_Add As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ColumnHeader12 As System.Windows.Forms.ColumnHeader
 End Class

@@ -151,14 +151,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PGLU DOCUMENT ARCHIVING SYSTEM.exe" size="899072">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PGLU DOCUMENT ARCHIVING SYSTEM.exe" size="905728">
       <assemblyIdentity name="PGLU DOCUMENT ARCHIVING SYSTEM" version="0.9.9.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>zdffn3VFEis9GGfcEE9zC5p94Hg=</dsig:DigestValue>
+        <dsig:DigestValue>7eHSVlvqa+LuhyNlo0P3keVy+/A=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

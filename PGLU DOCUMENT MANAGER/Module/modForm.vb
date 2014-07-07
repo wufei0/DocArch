@@ -402,7 +402,7 @@ Module modForm
             .lstTag.Items.Clear()
             Try
                 Call FBirdConnectionOpen()
-                FbSql = "SELECT COLUMNNAME_ID,COLUMN_NAME,FK_COLUMNGROUP_ID FROM S_COLUMNNAME WHERE FK_COLUMNGROUP_ID = '" & COLUMNGROUP_ID & "' ORDER BY PRIORITY,COLUMN_NAME ASC"
+                FbSql = "SELECT COLUMNNAME_ID,COLUMN_NAME,FK_COLUMNGROUP_ID,DESCRIPTION FROM S_COLUMNNAME WHERE FK_COLUMNGROUP_ID = '" & COLUMNGROUP_ID & "' ORDER BY PRIORITY,COLUMN_NAME ASC"
                 FbCommand.Connection = FbConnection
                 FbCommand.CommandText = FbSql
                 FBRecordset = FbCommand.ExecuteReader
@@ -411,6 +411,7 @@ Module modForm
                     lvItem = New ListViewItem(FBRecordset!COLUMNNAME_ID.ToString)
                     lvItem.SubItems.Add(FBRecordset!COLUMN_NAME.ToString)
                     lvItem.SubItems.Add("")
+                    lvItem.SubItems.Add(FBRecordset!DESCRIPTION.ToString)
                     .lstTag.Items.Add(lvItem)
                     .lblGroupID.Text = FBRecordset!FK_COLUMNGROUP_ID.ToString
                 End While

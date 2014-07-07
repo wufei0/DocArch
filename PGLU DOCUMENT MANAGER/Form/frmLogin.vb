@@ -137,8 +137,9 @@ Public Class frmLogin
             'FBsql = "SELECT * FROM SCHEDULER WHERE SCHEDULE_DATE BETWEEN '" & MdiAbono.mCalendar.TodayDate.Month & "/" & 1 & "/" & MdiAbono.mCalendar.TodayDate.Year & "' AND '" & DateSerial(MdiAbono.mCalendar.TodayDate.Year, MdiAbono.mCalendar.TodayDate.Month + 1, 0) & "' ORDER BY SCHEDULE_DATE"
             'Call LoadDate(FBsql)
         End If
+        Dim builddate As Date = RetrieveLinkerTimestamp(My.Application.Info.DirectoryPath & " \PGLU DOCUMENT ARCHIVING SYSTEM.exe")
 
-        PGLU_Doc_Manager.Text = "DocArch " & modFunction.GetVersion
+        PGLU_Doc_Manager.Text = "DocArch " & modFunction.GetVersion & " bd" & builddate.Year & "." & builddate.Month & "." & builddate.Day
 
 
     End Sub
@@ -156,5 +157,6 @@ Public Class frmLogin
         '
     End Sub
 
+   
    
 End Class

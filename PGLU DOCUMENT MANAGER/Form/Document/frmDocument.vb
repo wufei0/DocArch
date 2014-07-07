@@ -790,16 +790,25 @@ Public Class frmDocument
         ofdAttachment.Filter = "supported attachment file(image,pdf,document,spreadsheet)|*.pdf;*.jpg;*.jpeg;*.tif;*.doc;*.docx;*.xls;*.txt"
         ofdAttachment.FilterIndex = 1
         ofdAttachment.RestoreDirectory = True
+        ofdAttachment.Multiselect = True
         ofdAttachment.ShowDialog()
 
-        If ofdAttachment.FileName <> Nothing Then
-            lviTEM = New ListViewItem(CreateGuid("Attachment"))
-            lviTEM.SubItems.Add(ofdAttachment.FileName)
-            lviTEM.SubItems.Add(ofdAttachment.SafeFileName)
-            lviTEM.SubItems.Add(IO.Path.GetExtension(ofdAttachment.FileName))
-            lstAttachment.Items.Add(lviTEM)
+        'While ofdAttachment.FileNames.Count
+        'For Each File In ofdAttachment.FileNames
 
-        End If
+        For x = 0 To ofdAttachment.FileNames.Count - 1
+
+
+            If ofdAttachment.FileName <> Nothing Then
+                lviTEM = New ListViewItem(CreateGuid("Attachment"))
+                lviTEM.SubItems.Add(ofdAttachment.FileNames(x))
+
+                lviTEM.SubItems.Add(ofdAttachment.SafeFileNames(x))
+                lviTEM.SubItems.Add(IO.Path.GetExtension(ofdAttachment.FileNames(x)))
+                lstAttachment.Items.Add(lviTEM)
+
+            End If
+        Next
 
     End Sub
 

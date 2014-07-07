@@ -30,9 +30,11 @@ Public Class frmAuditLog
             '& "= SYSTEM_VERSION_FIX.VERSION_ID ORDER BY TRANSDATE  DESC"
             FbCommand.CommandText = "SELECT * FROM SYSTEM_VERSION ORDER BY TRANSDATE DESC"
             FbReader = FbCommand.ExecuteReader
+            Dim bdate As Date
 
             While FbReader.Read
-                txtRealeaseNote.AppendText(FbReader!VERSION_MAJOR.ToString & "." & FbReader!VERSION_MINOR.ToString & "." & FbReader!VERSION_BUILD.ToString)
+                bdate = FbReader!transdate
+                txtRealeaseNote.AppendText(FbReader!VERSION_MAJOR.ToString & "." & FbReader!VERSION_MINOR.ToString & "." & FbReader!VERSION_BUILD.ToString & " bd" & bdate.Year & "." & bdate.Month & "." & bdate.Day)
                 Fbcommand2 = New OdbcCommand
                 Fbcommand2.Connection = FbConnection
                 Fbcommand2.CommandText = "SELECT FIX FROM SYSTEM_VERSION_FIX WHERE VERSION_ID = " & FbReader!VERSION_ID

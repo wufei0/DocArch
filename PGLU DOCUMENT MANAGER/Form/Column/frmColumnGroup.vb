@@ -81,7 +81,7 @@ Public Class frmColumnGroup
             MsgBox("Group deleted successful", vbInformation, My.Application.Info.Title.ToString)
         Catch ex As Exception
             If ex.Message.Contains("FK_S_COLUMNNAME_0") Then
-                MsgBox("Delete first all Tags that uses this Group.", MsgBoxStyle.Information, My.Application.Info.Title.ToString)
+                MsgBox("Group still in use. Delete failed", MsgBoxStyle.Critical, My.Application.Info.Title.ToString)
             Else
 
                 MsgBox(ex.Message & vbNewLine & vbNewLine & FbCommand.CommandText, MsgBoxStyle.Critical, My.Application.Info.Title.ToString)

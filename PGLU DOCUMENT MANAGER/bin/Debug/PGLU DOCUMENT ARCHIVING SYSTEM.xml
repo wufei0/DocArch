@@ -19,6 +19,10 @@ PGLUDOCUMENTARCHIVINGSYSTEM
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Aha_Soft_Free_Large_Boss_Security">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.banner">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -43,11 +47,79 @@ PGLUDOCUMENTARCHIVINGSYSTEM
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Custom_Icon_Design_Pretty_Office_8_Text_columns">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Dario_Arnaez_Genesis_3G_User_Files">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Designcontest_Ecommerce_Business_Security">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Double_J_Design_Ravenna_3d_Settings">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Everaldo_Crystal_Clear_App_edit">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Everaldo_Crystal_Clear_App_help_index">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Everaldo_Kids_Icons_View_multi_column__1_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Graphicloads_100_Flat_2_Inside_logout">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Hopstarter_Button_Button_Cancel">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Hopstarter_Sleek_Xp_Basic_Close_2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Hopstarter_Sleek_Xp_Basic_User_Group">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Hopstarter_Soft_Scraps_File_Delete">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Icons_Land_Vista_Hardware_Devices_Security_Camera">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Icons_Land_Vista_People_Groups_Military_Personnel_Dark">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.images">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.keepassx">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Martz90_Circle_Settings">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Oxygen_Icons_org_Oxygen_Actions_help_about">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Pelfusion_Flat_File_Type_Log">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
@@ -60,6 +132,10 @@ PGLUDOCUMENTARCHIVINGSYSTEM
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.tj">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PGLU_DOCUMENT_MANAGER.My.Resources.Resources.Umut_Pulat_Tulliana_2_Log">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>

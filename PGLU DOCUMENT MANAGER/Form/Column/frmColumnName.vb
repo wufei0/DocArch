@@ -97,7 +97,12 @@ Public Class frmColumnName
 
             MsgBox("Index deleted successfully", vbInformation, My.Application.Info.Title.ToString)
         Catch ex As Exception
-            MsgBox(ex.Message & vbNewLine & vbNewLine & FbCommand.CommandText, MsgBoxStyle.Critical, My.Application.Info.Title.ToString)
+            If ex.Message.Contains("FK_L_TAG_1") Then
+                MsgBox("Index still in use. Delete failed.", MsgBoxStyle.Critical, My.Application.Info.Title.ToString)
+            Else
+                MsgBox(ex.Message & vbNewLine & vbNewLine & FbCommand.CommandText, MsgBoxStyle.Critical, My.Application.Info.Title.ToString)
+            End If
+
         Finally
             FbConnection.Close()
             FbCommand.Dispose()

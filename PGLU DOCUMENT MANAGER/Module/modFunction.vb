@@ -166,7 +166,7 @@ Module modFunction
             fbreader.Read()
             Dim buildDate As Date = fbreader!TRANSDATE
 
-            GetVersion = "v" & fbreader!VERSION_MAJOR.ToString() & "." & fbreader!VERSION_MINOR.ToString() & "." & fbreader!VERSION_BUILD.ToString() & " bd." & buildDate.Year & "." & buildDate.Month & "." & buildDate.Day
+            GetVersion = "v" & fbreader!VERSION_MAJOR.ToString() & "." & fbreader!VERSION_MINOR.ToString() & "." & fbreader!VERSION_BUILD.ToString() '& " bd." & buildDate.Year & "." & buildDate.Month & "." & buildDate.Day
             fbreader.Close()
         Catch ex As Exception
             GetVersion = Nothing
@@ -177,5 +177,31 @@ Module modFunction
         End Try
 
         Return GetVersion
+    End Function
+
+    Function RetrieveLinkerTimestamp(ByVal filePath As String) As DateTime
+
+        Const PortableExecutableHeaderOffset As Integer = 60
+        Const LinkerTimestampOffset As Integer = 8
+
+        Dim b(2047) As Byte
+        Dim s As IO.Stream = Nothing
+
+        Try
+            s = New IO.FileStream(filePath, IO.FileMode.Open, IO.FileAccess.Read)
+            s.Read(b, 0, 2048)
+        Finally
+            If Not s Is Nothing Then s.Close()
+        End Try
+
+        Dim i As Integer = BitConverter.ToInt32(b, PortableExecutableHeaderOffset)
+        Dim secondsSince1970 As Integer = BitConverter.ToInt32(b, i + LinkerTimestampOffset)
+        Dim dt As New DateTime(1970, 1, 1, 0, 0, 0)
+
+        dt = dt.AddSeconds(secondsSince1970)
+        dt = dt.AddHours(TimeZone.CurrentTimeZone.GetUtcOffset(dt).Hours)
+
+        Return dt
+
     End Function
 End Module

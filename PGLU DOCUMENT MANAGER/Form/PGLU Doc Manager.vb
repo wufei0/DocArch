@@ -394,7 +394,7 @@ Public Class PGLU_Doc_Manager
                 'L_TAG'
                 .lstTag.Items.Clear()
                 modFunction.SystemStatus("Retrieving indexes")
-                FbSql = "SELECT COLUMNNAME_ID,COLUMN_NAME,FK_COLUMNGROUP_ID FROM S_COLUMNNAME WHERE FK_COLUMNGROUP_ID = '" & .lblGroupID.Text & "' ORDER BY PRIORITY,COLUMN_NAME ASC"
+                FbSql = "SELECT COLUMNNAME_ID,COLUMN_NAME,FK_COLUMNGROUP_ID,DESCRIPTION FROM S_COLUMNNAME WHERE FK_COLUMNGROUP_ID = '" & .lblGroupID.Text & "' ORDER BY PRIORITY,COLUMN_NAME ASC"
                 FbCommand.Connection = FbConnection
                 FbCommand.CommandText = FbSql
                 FBrecordset = FbCommand.ExecuteReader
@@ -403,6 +403,7 @@ Public Class PGLU_Doc_Manager
                     LVitem = New ListViewItem(FBrecordset!COLUMNNAME_ID.ToString)
                     LVitem.SubItems.Add(FBrecordset!COLUMN_NAME.ToString)
                     LVitem.SubItems.Add("")
+                    LVitem.SubItems.Add(FBrecordset!DESCRIPTION.ToString)
                     .lstTag.Items.Add(LVitem)
                     .lblGroupID.Text = FBrecordset!FK_COLUMNGROUP_ID.ToString
                 End While
@@ -723,5 +724,9 @@ Public Class PGLU_Doc_Manager
         modFunction.SystemStatus("Log in")
         frmLogin.ShowDialog()
         modFunction.SystemStatus()
+    End Sub
+
+    Private Sub lstSearch_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstSearch.SelectedIndexChanged
+
     End Sub
 End Class
