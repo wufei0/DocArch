@@ -32,7 +32,7 @@ Module modConnection
             Loop Until ConfCategory Is Nothing
             COnfReader.Close()
 
-            FbSql = "Driver=Firebird/InterBase(r) driver;Uid=sysdba; Pwd=masterkey; Dbname=" & FirebirdIP & ":" & FirebirdDbase & "; "
+            FbSql = "Driver=Firebird/InterBase(r) driver;Uid=sysdba; Pwd=launi0n@dmin; Dbname=" & FirebirdIP & ":" & FirebirdDbase & "; "
             'DBConstring = "Driver=Firebird/InterBase(r) driver;Uid=sysdba; Pwd=masterkey; FirebirdDbase=" & FirebirdDbase & "; "
             FbConnection = New OdbcConnection(FbSql)
             FbConnection.Open()

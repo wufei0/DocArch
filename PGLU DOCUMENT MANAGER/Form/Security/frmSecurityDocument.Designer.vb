@@ -68,6 +68,7 @@ Partial Class frmSecurityDocument
         '
         'lstSecurityGroup
         '
+        Me.lstSecurityGroup.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lstSecurityGroup.CheckBoxes = True
         Me.lstSecurityGroup.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader5, Me.ColumnHeader8})
         Me.lstSecurityGroup.FullRowSelect = True
@@ -102,6 +103,7 @@ Partial Class frmSecurityDocument
         '
         'lstColumnGroup
         '
+        Me.lstColumnGroup.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lstColumnGroup.CheckBoxes = True
         Me.lstColumnGroup.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader6, Me.ColumnHeader7, Me.ColumnHeader9})
         Me.lstColumnGroup.FullRowSelect = True
@@ -141,6 +143,7 @@ Partial Class frmSecurityDocument
         '
         'lstGroupPrivilege
         '
+        Me.lstGroupPrivilege.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lstGroupPrivilege.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader10, Me.ColumnHeader3, Me.ColumnHeader11})
         Me.lstGroupPrivilege.FullRowSelect = True
         Me.lstGroupPrivilege.GridLines = True
@@ -188,7 +191,7 @@ Partial Class frmSecurityDocument
         Me.GroupBox4.Controls.Add(Me.Label1)
         Me.GroupBox4.Location = New System.Drawing.Point(746, 12)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(174, 300)
+        Me.GroupBox4.Size = New System.Drawing.Size(174, 319)
         Me.GroupBox4.TabIndex = 4
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "How to"
@@ -269,7 +272,7 @@ Partial Class frmSecurityDocument
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(270, 257)
+        Me.btnSave.Location = New System.Drawing.Point(270, 250)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(61, 23)
         Me.btnSave.TabIndex = 5
@@ -279,7 +282,7 @@ Partial Class frmSecurityDocument
         '
         'btnDelete
         '
-        Me.btnDelete.Location = New System.Drawing.Point(270, 289)
+        Me.btnDelete.Location = New System.Drawing.Point(270, 308)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(61, 23)
         Me.btnDelete.TabIndex = 5

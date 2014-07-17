@@ -144,16 +144,7 @@
 
     End Sub
 
-    Private Sub frmSecurityDocument_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Resize
-        ''GroupBox1.Height = Me.Height - 330
-        'GroupBox2.Height = Me.Height - 330
-        ''lstSecurityGroup.Height = GroupBox1.Height - 30
-        'lstColumnGroup.Height = GroupBox2.Height - 30
 
-        'GroupBox2.Top = Me.Height - 320
-        ''lstColumnGroup.Top = 19
-
-    End Sub
 
     Private Sub lstSecurityGroup_ColumnClick(ByVal sender As Object, ByVal e As System.Windows.Forms.ColumnClickEventArgs) Handles lstSecurityGroup.ColumnClick
 
