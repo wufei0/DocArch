@@ -152,8 +152,8 @@ Public Class frmLogin
         'MsgBox(My.Application.Info.Version.Major)
         'MsgBox(My.Application.Info.Version.Build)
 
-        txtuser.Text = "user1"
-        txtpassword.Text = "USER1"
+        'txtuser.Text = "user1"
+        'txtpassword.Text = "USER1"
         '
     End Sub
 
