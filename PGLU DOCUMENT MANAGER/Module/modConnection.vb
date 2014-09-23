@@ -51,7 +51,7 @@ Module modConnection
     Public Function FBUserConnect(ByVal UserName As String, ByVal Password As String) As Boolean
 
         Try
-            FbSql = "Driver=Firebird/InterBase(r) driver;Uid=" & UserName.ToUpper & "; Pwd=" & Password & "; Dbname=" & FirebirdIP & ":" & FirebirdDbase & "; "
+            FbSql = "Driver=Firebird/InterBase(r) driver;Uid=" & UserName.ToUpper & "; Pwd=" & Password & "; Dbname=" & FirebirdIP & ":" & FirebirdDbase & "; Charset=utf8"
             FbConnection = New OdbcConnection(FbSql)
             FbConnection.Open()
         Catch ex As Exception
@@ -70,7 +70,7 @@ Module modConnection
     Public Sub FBirdConnectionOpen()
         Try
             modFunction.SystemStatus("Reconnecting to db server")
-            FbSql = "Driver=Firebird/InterBase(r) driver;Uid=" & SysUserName.ToUpper & "; Pwd=" & SysPassword & "; Dbname=" & FirebirdIP & ":" & FirebirdDbase & "; "
+            FbSql = "Driver=Firebird/InterBase(r) driver;Uid=" & SysUserName.ToUpper & "; Pwd=" & SysPassword & "; Dbname=" & FirebirdIP & ":" & FirebirdDbase & "; Charset=utf8"
             FbConnection = New OdbcConnection(FbSql)
             FbConnection.Open()
         Catch ex As Exception

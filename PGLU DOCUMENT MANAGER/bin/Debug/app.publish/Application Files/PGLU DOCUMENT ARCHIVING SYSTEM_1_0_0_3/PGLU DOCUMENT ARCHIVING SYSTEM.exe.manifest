@@ -4,7 +4,7 @@
   <description asmv2:iconFile="favicon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="PGLU DOCUMENT ARCHIVING SYSTEM" version="0.9.1.0" language="neutral" processorArchitecture="x86" />
+    <assemblyIdentity name="PGLU DOCUMENT ARCHIVING SYSTEM" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
     <commandLine file="PGLU DOCUMENT ARCHIVING SYSTEM.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -50,31 +50,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>KmavtOMhLEcGdyLEpiyHQGXzaBM=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="commons-logging.dll" size="83456">
-      <assemblyIdentity name="commons-logging" version="0.0.0.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>5ETZfPdttJEYnB5s3ecDvsSyfJ8=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="fontbox-1.8.4.dll" size="202752">
-      <assemblyIdentity name="fontbox-1.8.4" version="1.8.4.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>1oHpfOFWCsjJMwDSrnFyS9s1RcI=</dsig:DigestValue>
+        <dsig:DigestValue>b4RDXnDKlQdwKV57V0WRT5PEgQU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -103,30 +79,6 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IKVM.OpenJDK.Util.dll" size="1936384">
-      <assemblyIdentity name="IKVM.OpenJDK.Util" version="7.2.4630.5" publicKeyToken="13235D27FCBFFF58" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>yQHUNQg/gceuB5lg5OA5Xir0nr8=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IKVM.Runtime.dll" size="983040">
-      <assemblyIdentity name="IKVM.Runtime" version="7.2.4630.5" publicKeyToken="13235D27FCBFFF58" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>rRgUv4Lh8YPpow06zQsePkF9zYs=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Interop.AcroPDFLib.dll" size="12800">
       <assemblyIdentity name="Interop.AcroPDFLib" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
@@ -134,7 +86,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>YfW09R1xzX8N7lmsjyZyIz6NHZs=</dsig:DigestValue>
+        <dsig:DigestValue>1/ebBs0cqKYaopTlsZh3N4CGrf8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -151,17 +103,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PGLU DOCUMENT ARCHIVING SYSTEM.exe" size="802816">
-      <assemblyIdentity name="PGLU DOCUMENT ARCHIVING SYSTEM" version="0.9.1.0" language="neutral" processorArchitecture="x86" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PGLU DOCUMENT ARCHIVING SYSTEM.exe" size="1811456">
+      <assemblyIdentity name="PGLU DOCUMENT ARCHIVING SYSTEM" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>cbjkbWcOad4CDqeilZdoJHoowpo=</dsig:DigestValue>
+        <dsig:DigestValue>N9qgXTIgQEYVJn6OgPTM+/h0DXU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
+  <file name="bin\Debug\config.inf" size="41">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>DkZxqqHcCakVwlOfkIJF7WT8Wkc=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="favicon.ico" size="132940">
     <hash>
       <dsig:Transforms>
@@ -187,4 +148,4 @@
       <!--<supportedOS Id="{35138b9a-5d96-4fbd-8e2d-a2440225f93a}"/>-->
     </application>
   </compatibility>
-<publisherIdentity name="CN=google\Computer Name" issuerKeyHash="4895eefa2f6c9450cd06d4768a51583b6d30bc81" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>blh4aFoDWooyl6HFvdP/N46dgyc=</DigestValue></Reference></SignedInfo><SignatureValue>YM2K8Abr+Yy3Q23Tw+f1UkcC0rnTOhq5zE/aeafp2VskOA9NWZ1i5/oXHvwbAhtgG+IXxX7QWd02d9xn1RBurL5a2kNgoX2HuXQaqCuTUD6ZRau6DFeOUep4cKk32KyEl75fX9hf2bBb6B1n7S0jSe6qVou+E3tZLYXmdNSdl1o=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>qkPfdUnpgT3Rg7rKU6jOed2L1uVDVU8COgse9ntVWN+mIczaiYdXdlshTOeZwsvUti6B1Q3ET3PrBMyXH3U4iiEYXkD+YkkKAUMXuw7om8O9iFL8y9ZiFYawrukBsuj8ovH4CQtONtF881RjvA/l7Qa89HQQaMxVQpIZBzRuIG0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="27839d8e37ffd3bdc5a197328a5a035a6878586e" Description="" Url=""><as:assemblyIdentity name="PGLU DOCUMENT ARCHIVING SYSTEM.exe" version="1.0.0.3" publicKeyToken="ff42c4b577dc4fe9" language="neutral" processorArchitecture="x86" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=google\Computer Name</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>PcaUgNcDh4OefrVeOIlJaG6Bu4k=</DigestValue></Reference></SignedInfo><SignatureValue>Vtxg8Wu6EWTjJ/Sx13XABXodmP2PMYt6JeRTkAd49WPpsI0/dBFGeH3cIOMFhP/6wydY0nHQHIli4gsTDAVBGS4/XxLEK+PFos/zUAVvI+FWugRo4XzW8Havo6ycwff20FWmKkrghxjqko4SVxgV3cyWuNbBVJr2qwIYEhi/3RE=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>qkPfdUnpgT3Rg7rKU6jOed2L1uVDVU8COgse9ntVWN+mIczaiYdXdlshTOeZwsvUti6B1Q3ET3PrBMyXH3U4iiEYXkD+YkkKAUMXuw7om8O9iFL8y9ZiFYawrukBsuj8ovH4CQtONtF881RjvA/l7Qa89HQQaMxVQpIZBzRuIG0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB6TCCAVKgAwIBAgIQKEg9R+XgZY1Jkf8oa2GwNzANBgkqhkiG9w0BAQUFADAzMTEwLwYDVQQDHigAZwBvAG8AZwBsAGUAXABDAG8AbQBwAHUAdABlAHIAIABOAGEAbQBlMB4XDTE0MDQyMTA3MTAyMloXDTE1MDQyMTEzMTAyMlowMzExMC8GA1UEAx4oAGcAbwBvAGcAbABlAFwAQwBvAG0AcAB1AHQAZQByACAATgBhAG0AZTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAqkPfdUnpgT3Rg7rKU6jOed2L1uVDVU8COgse9ntVWN+mIczaiYdXdlshTOeZwsvUti6B1Q3ET3PrBMyXH3U4iiEYXkD+YkkKAUMXuw7om8O9iFL8y9ZiFYawrukBsuj8ovH4CQtONtF881RjvA/l7Qa89HQQaMxVQpIZBzRuIG0CAwEAATANBgkqhkiG9w0BAQUFAAOBgQB+tLbKV+fJIOtskwg/lHH3fRysfZvBUiIOxCBRLlOVJugfzzaQNKvEzyvZdqwIqnzOJQOoEQCNO0vkiF5vq3KDhmA+brPBlO8nmzhzr6beY8oOZCwqksNeNvL46ho7uDfgZ8JAqG4wsyoRMX+KP+j0oRFpVoD3zhMNKf+GlJ9AGw==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
+<publisherIdentity name="CN=google\Computer Name" issuerKeyHash="4895eefa2f6c9450cd06d4768a51583b6d30bc81" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>Qz2VfK/wJf3RCrE6+b6xJPSGCQI=</DigestValue></Reference></SignedInfo><SignatureValue>Ca+vLhLLncCyYLnCl3E2betPta8x+1uA80G7oXTNiulZwN1jvrOQBmFqAZYxYG1j2EHS61wfaaMb3iIb/+ktTI46Vf17PgNh4wD3Kay8Bb1rH/xptZMl4aK4loSLK+VApS/ZawvApoggRUiOfMnaEC2wmq9MOoQ0OLiJYrELsaU=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>qkPfdUnpgT3Rg7rKU6jOed2L1uVDVU8COgse9ntVWN+mIczaiYdXdlshTOeZwsvUti6B1Q3ET3PrBMyXH3U4iiEYXkD+YkkKAUMXuw7om8O9iFL8y9ZiFYawrukBsuj8ovH4CQtONtF881RjvA/l7Qa89HQQaMxVQpIZBzRuIG0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="020986f424b1bef93ab10ad1fd25f0af7c953d43" Description="" Url=""><as:assemblyIdentity name="PGLU DOCUMENT ARCHIVING SYSTEM.exe" version="1.0.0.3" publicKeyToken="ff42c4b577dc4fe9" language="neutral" processorArchitecture="x86" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=google\Computer Name</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>bcKyuc+5fchhRgim9yNRhZ8dq6E=</DigestValue></Reference></SignedInfo><SignatureValue>IruphHMjU9ijkiI9SKTTb+PaxyM6zRlgXi32hZRFiSspfnaPWz5WBA1usTfpru1Bg+9pmqXyAJ/biTdYW3rmUdiUq5uIFvxfYSMUhW6ohlY6s9CUB0p3/LFJf7eOO7iQ7wfq5ShJVqrmmXdk6bsNQw3Yaziuh/DVA2pfK8GYG+A=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>qkPfdUnpgT3Rg7rKU6jOed2L1uVDVU8COgse9ntVWN+mIczaiYdXdlshTOeZwsvUti6B1Q3ET3PrBMyXH3U4iiEYXkD+YkkKAUMXuw7om8O9iFL8y9ZiFYawrukBsuj8ovH4CQtONtF881RjvA/l7Qa89HQQaMxVQpIZBzRuIG0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB6TCCAVKgAwIBAgIQKEg9R+XgZY1Jkf8oa2GwNzANBgkqhkiG9w0BAQUFADAzMTEwLwYDVQQDHigAZwBvAG8AZwBsAGUAXABDAG8AbQBwAHUAdABlAHIAIABOAGEAbQBlMB4XDTE0MDQyMTA3MTAyMloXDTE1MDQyMTEzMTAyMlowMzExMC8GA1UEAx4oAGcAbwBvAGcAbABlAFwAQwBvAG0AcAB1AHQAZQByACAATgBhAG0AZTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAqkPfdUnpgT3Rg7rKU6jOed2L1uVDVU8COgse9ntVWN+mIczaiYdXdlshTOeZwsvUti6B1Q3ET3PrBMyXH3U4iiEYXkD+YkkKAUMXuw7om8O9iFL8y9ZiFYawrukBsuj8ovH4CQtONtF881RjvA/l7Qa89HQQaMxVQpIZBzRuIG0CAwEAATANBgkqhkiG9w0BAQUFAAOBgQB+tLbKV+fJIOtskwg/lHH3fRysfZvBUiIOxCBRLlOVJugfzzaQNKvEzyvZdqwIqnzOJQOoEQCNO0vkiF5vq3KDhmA+brPBlO8nmzhzr6beY8oOZCwqksNeNvL46ho7uDfgZ8JAqG4wsyoRMX+KP+j0oRFpVoD3zhMNKf+GlJ9AGw==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
