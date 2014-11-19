@@ -425,10 +425,12 @@ Partial Class PGLU_Doc_Manager
         '
         'ColumnHeader8
         '
+        Me.ColumnHeader8.DisplayIndex = 3
         Me.ColumnHeader8.Text = "Note"
         '
         'ColumnHeader3
         '
+        Me.ColumnHeader3.DisplayIndex = 2
         Me.ColumnHeader3.Text = "Index"
         Me.ColumnHeader3.Width = 130
         '
@@ -464,6 +466,7 @@ Partial Class PGLU_Doc_Manager
         '
         'PGLU_Doc_Manager
         '
+        Me.AcceptButton = Me.btnSearch
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
@@ -472,6 +475,7 @@ Partial Class PGLU_Doc_Manager
         Me.Controls.Add(Me.grpSearch)
         Me.Controls.Add(Me.MenuStrip)
         Me.Controls.Add(Me.StatusStrip)
+        Me.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip

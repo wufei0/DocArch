@@ -41,13 +41,12 @@ Public Class clsLog
                 'MsgBox(ex.Message)
             Finally
 
-                If Fbreader.IsClosed Then
-                Else
+             
                     Fbreader.Close()
-                End If
 
-                FbCommand.Dispose()
-                FbConnection.Close()
+
+                    FbCommand.Dispose()
+                    FbConnection.Close()
             End Try
 
         End With

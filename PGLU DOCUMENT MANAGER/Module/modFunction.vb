@@ -1,4 +1,7 @@
 ﻿Imports System.Data.Odbc
+Imports System.Security.Cryptography
+Imports System.IO
+Imports System.Text
 
 Module modFunction
     'FUNCTION TO CREATE GUID TO BE USED FOR PRIMARY KEYS
@@ -202,6 +205,67 @@ Module modFunction
         dt = dt.AddHours(TimeZone.CurrentTimeZone.GetUtcOffset(dt).Hours)
 
         Return dt
+
+    End Function
+
+    'FUNCTION TO GET THE HASH VALUE OF A FILE
+    'INPUT: FILE PATH OF THE FILE
+    'OUTPUT: HASH VALUE
+    Function GetHash(ByVal FilePath As String) As String
+        GetHash = Nothing
+
+        Dim RD As FileStream = New FileStream(FilePath, FileMode.Open, FileAccess.Read, FileShare.Read, 8192)
+        RD = New FileStream(FilePath, FileMode.Open, FileAccess.Read, FileShare.Read, 8192)
+        Dim md5 As MD5CryptoServiceProvider = New MD5CryptoServiceProvider
+        md5.ComputeHash(RD)
+        RD.Close()
+
+        'converting the bytes into string
+        Dim hash As Byte() = md5.Hash
+        Dim SB As StringBuilder = New StringBuilder
+        Dim HB As Byte
+        For Each HB In hash
+            SB.Append(String.Format("{0:X1}", HB))
+        Next
+        GetHash = SB.ToString()
+
+
+        Return GetHash
+
+    End Function
+
+    'FUNCTION TO RETRIEVE EXISTING HASHES FROM C_DOCUMENTFILE
+    ''INPUT: HASH STRING
+    ''OUTPUT: TRUE OR FALSE
+    Function GiveHash(ByVal hashstring As String) As Boolean
+        'GiveHash = False
+        Dim int As Integer = 0
+        'Dim rs As OdbcDataReader
+        Dim cmd As New OdbcCommand
+        Dim FBtrans As OdbcTransaction = Nothing
+
+        Try
+            cmd.Connection = FbConnection
+            FBtrans = FbConnection.BeginTransaction
+            cmd.Transaction = FBtrans
+
+            cmd.CommandText = "SELECT COUNT(*) FROM C_DOCUMENTFILE WHERE DOCHASH LIKE '" & hashstring & "' "
+            int = cmd.ExecuteScalar()
+            MsgBox(int)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            cmd.Dispose()
+            FBtrans.Rollback()
+        End Try
+
+        If int > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+
+
 
     End Function
 End Module

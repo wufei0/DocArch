@@ -22,6 +22,7 @@ Public Class frmLogin
 
         If FBUserConnect(SysUserName, SysPassword) = False Then
             MsgBox("Username or password is invalid", vbInformation, My.Application.Info.Title.ToString)
+            Exit Sub
 
         Else
             Try

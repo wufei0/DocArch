@@ -4,6 +4,8 @@ Imports System.IO
 Imports org.apache.pdfbox.pdmodel
 Imports org.apache.pdfbox.util
 
+
+
 Public Class frmDocument
     Dim oDocument As Object
     Dim PDFFileInfo As FileInfo
@@ -71,7 +73,7 @@ Public Class frmDocument
 
         ''''OCR END
 
-        'MsgBox(axDocument.src)
+        ''''GENERATE GUID FOR PRIMARY KEYS
         GuidID = CreateGuid(Me.Name)
         If lblFileName.Text = Nothing Then
             Beep()
@@ -90,9 +92,29 @@ Public Class frmDocument
             FbCommand.CommandText = "SELECT NEXT VALUE FOR GEN_SECURITY_TRANSACTION_ID FROM RDB$DATABASE;"
             TransactionNumber = FbCommand.ExecuteScalar
 
+            ''GET/CHECK HASH OF PDF FILE
+            Dim MD5hashvalue As String
+            Dim hashcount As Integer
+            MD5hashvalue = modFunction.GetHash(PDFFileInfo.FullName.ToString)
+            'MsgBox(MD5hashvalue)
+            FbCommand.CommandText = "SELECT COUNT(*) FROM C_DOCUMENTFILE WHERE DOCHASH LIKE '" & MD5hashvalue & "' "
+            hashcount = FbCommand.ExecuteScalar()
+            If hashcount > 0 Then
+                If MsgBox("File already exist in the database. Continue save?", MsgBoxStyle.Information + MsgBoxStyle.YesNo) = MsgBoxResult.No Then
+                    FBtransaction.Rollback()
+                    Exit Try
+
+                End If
+            End If
+            ''FbSql = "SELECT * FROM C_DOCUMENTFILE WHERE DOCHASH = '" & MD5hashvalue & "' "
+
+            ''END GET/CHECK HASH OF PDF FILE
+
             'CHECK IF LBLID IS EMPTY
             'THIS WILL IDENTIFY IF EDIT OR NEW
             If lblID.Text = Nothing Then
+
+
                 'INSERT INTO C_DOCUMENT TABLE
                 modFunction.SystemStatus("Inserting document")
                 FbSql = "INSERT INTO C_DOCUMENT(DOCUMENT_ID,FK_COLUMNGROUP_ID,SECURITY_USER) VALUES ('" & GuidID & "','" & lblGroupID.Text & "','" & LoggedUser & "')"
@@ -114,7 +136,7 @@ Public Class frmDocument
                 doc = PDDocument.load(pdfpath)
                 stripper = New PDFTextStripper
                 OCRstring = stripper.getText(doc)
-                
+
                 If doc IsNot Nothing Then
                     doc.close()
                 End If
@@ -124,18 +146,20 @@ Public Class frmDocument
                 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
                 modFunction.SystemStatus("Inserting document file")
-            FbCommand.Parameters.Clear()
-                FbCommand.CommandText = "INSERT INTO C_DOCUMENTFILE(DOCUMENTFILE_ID,BLOBFILE,FILENAME,FILESIZE,FK_DOCUMENT_ID,SECURITY_USER,NOTE,OCR) VALUES (?,?,?,?,?,?,?,?)"
-            FbCommand.Parameters.AddWithValue("@DOCUMENTFILE_ID", lblDocumentFileID.Text)
-            FbCommand.Parameters.AddWithValue("@BLOBFILE", RawData)
-            FbCommand.Parameters.AddWithValue("@FILENAME", lblFileName.Text)
-            FbCommand.Parameters.AddWithValue("@FILESIZE", Format(PDFFileInfo.Length / 1024, "0.00"))
-            FbCommand.Parameters.AddWithValue("@FK_DOCUMENT_ID", GuidID)
-            FbCommand.Parameters.AddWithValue("@SECURITY_USER", LoggedUser)
-            FbCommand.Parameters.AddWithValue("@NOTE", txtNote.Text)
+                FbCommand.Parameters.Clear()
+                FbCommand.CommandText = "INSERT INTO C_DOCUMENTFILE(DOCUMENTFILE_ID,BLOBFILE,FILENAME,FILESIZE,FK_DOCUMENT_ID,SECURITY_USER,NOTE,OCR,DOCHASH) VALUES (?,?,?,?,?,?,?,?,?)"
+                FbCommand.Parameters.AddWithValue("@DOCUMENTFILE_ID", lblDocumentFileID.Text)
+                FbCommand.Parameters.AddWithValue("@BLOBFILE", RawData)
+                FbCommand.Parameters.AddWithValue("@FILENAME", lblFileName.Text)
+                FbCommand.Parameters.AddWithValue("@FILESIZE", Format(PDFFileInfo.Length / 1024, "0.00"))
+                FbCommand.Parameters.AddWithValue("@FK_DOCUMENT_ID", GuidID)
+                FbCommand.Parameters.AddWithValue("@SECURITY_USER", LoggedUser)
+                FbCommand.Parameters.AddWithValue("@NOTE", txtNote.Text)
                 FbCommand.Parameters.AddWithValue("@OCR", OCRbyte)
+                FbCommand.Parameters.AddWithValue("@DOCHASH", MD5hashvalue)
 
-            FbCommand.ExecuteNonQuery()
+
+                FbCommand.ExecuteNonQuery()
 
                 Call AuditLog("INSERT INTO C_DOCUMENTFILE(DOCUMENTFILE_ID,BLOBFILE,FILENAME,FILESIZE," _
                               & "FK_DOCUMENT_ID,SECURITY_USER,NOTE,OCR) VALUES(" & lblDocumentFileID.Text & ",BLOB," _
@@ -143,139 +167,139 @@ Public Class frmDocument
 
                 'INSERT INTO L_TAG TABLE
                 modFunction.SystemStatus("Inserting index")
-            For counterX = 0 To lstTag.Items.Count - 1
-                'If lstTag.Items(counterX).SubItems(2).Text <> "" Then
-                FbSql = "INSERT INTO L_TAG(FK_DOCUMENTFILE_ID,FK_COLUMNNAME_ID,SECURITY_USER,TEXT) VALUES ('" & lblDocumentFileID.Text & "','" & lstTag.Items(counterX).SubItems(0).Text & "','" & LoggedUser & "','" & lstTag.Items(counterX).SubItems(2).Text & "')"
-                FbCommand.CommandText = FbSql
-                FbCommand.ExecuteNonQuery()
-                Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "INSERT")
-                'End If
-            Next
+                For counterX = 0 To lstTag.Items.Count - 1
+                    'If lstTag.Items(counterX).SubItems(2).Text <> "" Then
+                    FbSql = "INSERT INTO L_TAG(FK_DOCUMENTFILE_ID,FK_COLUMNNAME_ID,SECURITY_USER,TEXT) VALUES ('" & lblDocumentFileID.Text & "','" & lstTag.Items(counterX).SubItems(0).Text & "','" & LoggedUser & "','" & lstTag.Items(counterX).SubItems(2).Text & "')"
+                    FbCommand.CommandText = FbSql
+                    FbCommand.ExecuteNonQuery()
+                    Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "INSERT")
+                    'End If
+                Next
 
                 'INSERT ATTACHMENT FILE
                 modFunction.SystemStatus("Inserting attachment")
-            For intX = 0 To lstAttachment.Items.Count - 1
+                For intX = 0 To lstAttachment.Items.Count - 1
 
-                FS = New FileStream(lstAttachment.Items(intX).SubItems(1).Text, FileMode.OpenOrCreate, FileAccess.Read)
-                RawData = New Byte((FS.Length) - 1) {}
-                FS.Read(RawData, 0, FS.Length)
-                FS.Close()
+                    FS = New FileStream(lstAttachment.Items(intX).SubItems(1).Text, FileMode.OpenOrCreate, FileAccess.Read)
+                    RawData = New Byte((FS.Length) - 1) {}
+                    FS.Read(RawData, 0, FS.Length)
+                    FS.Close()
 
-                FbCommand.Parameters.Clear()
-                FbSql = "INSERT INTO C_ATTACHMENT(ATTACHMENT_ID,BLOBATTACHMENT,FILENAME,FILETYPE,FK_DOCUMENTFILE_ID,SECURITY_USER) VALUES (?,?,?,?,?,?)"
-                FbCommand.CommandText = FbSql
-                FbCommand.Parameters.AddWithValue("@ATTACHMENT_ID", lstAttachment.Items(intX).SubItems(0).Text)
-                FbCommand.Parameters.AddWithValue("@BLOBATTACHMENT", RawData)
-                FbCommand.Parameters.AddWithValue("@FILENAME", lstAttachment.Items(intX).SubItems(2).Text)
-                FbCommand.Parameters.AddWithValue("@FILETYPE", lstAttachment.Items(intX).SubItems(3).Text)
-                FbCommand.Parameters.AddWithValue("@FK_DOCUMENTFILE_ID", lblDocumentFileID.Text)
-                FbCommand.Parameters.AddWithValue("@SECURITY_USER", LoggedUser)
-                FbCommand.ExecuteNonQuery()
-                Call AuditLog("INSERT INTO C_ATTACHMENT(ATTACHMENT_ID,BLOBATTACHMENT,FILENAME,FILETYPE,FK_DOCUMENTFILE_ID,SECURITY_USER) VALUES (" & lstAttachment.Items(intX).SubItems(0).Text & ",BLOB," & lstAttachment.Items(intX).SubItems(2).Text & "," & lstAttachment.Items(intX).SubItems(3).Text & "," & lblDocumentFileID.Text & "," & LoggedUser & ")", TransactionNumber, "INSERT")
-            Next
+                    FbCommand.Parameters.Clear()
+                    FbSql = "INSERT INTO C_ATTACHMENT(ATTACHMENT_ID,BLOBATTACHMENT,FILENAME,FILETYPE,FK_DOCUMENTFILE_ID,SECURITY_USER) VALUES (?,?,?,?,?,?)"
+                    FbCommand.CommandText = FbSql
+                    FbCommand.Parameters.AddWithValue("@ATTACHMENT_ID", lstAttachment.Items(intX).SubItems(0).Text)
+                    FbCommand.Parameters.AddWithValue("@BLOBATTACHMENT", RawData)
+                    FbCommand.Parameters.AddWithValue("@FILENAME", lstAttachment.Items(intX).SubItems(2).Text)
+                    FbCommand.Parameters.AddWithValue("@FILETYPE", lstAttachment.Items(intX).SubItems(3).Text)
+                    FbCommand.Parameters.AddWithValue("@FK_DOCUMENTFILE_ID", lblDocumentFileID.Text)
+                    FbCommand.Parameters.AddWithValue("@SECURITY_USER", LoggedUser)
+                    FbCommand.ExecuteNonQuery()
+                    Call AuditLog("INSERT INTO C_ATTACHMENT(ATTACHMENT_ID,BLOBATTACHMENT,FILENAME,FILETYPE,FK_DOCUMENTFILE_ID,SECURITY_USER) VALUES (" & lstAttachment.Items(intX).SubItems(0).Text & ",BLOB," & lstAttachment.Items(intX).SubItems(2).Text & "," & lstAttachment.Items(intX).SubItems(3).Text & "," & lblDocumentFileID.Text & "," & LoggedUser & ")", TransactionNumber, "INSERT")
+                Next
 
 
-            '''''''''''''''''''''''
-            'EDIT CURRENT DOCUMENT'
-            '''''''''''''''''''''''
+                '''''''''''''''''''''''
+                'EDIT CURRENT DOCUMENT'
+                '''''''''''''''''''''''
             Else
                 'CHECK IF PDF DOCUMENT IS CHANGED/NEW
                 modFunction.SystemStatus("Updating document")
-            If Microsoft.VisualBasic.Right(axDocument.src, 10) = "v13w3$.tmp" Then
-                'UPDATE PDF PROPERTIES AND NOTE
-                FbSql = "UPDATE C_DOCUMENTFILE SET NOTE='" & txtNote.Text & "',SECURITY_USER='" & LoggedUser & "' WHERE DOCUMENTFILE_ID = '" & lblDocumentFileID.Text & "' "
-                FbCommand.CommandText = FbSql
-                FbCommand.ExecuteNonQuery()
-                Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "UPDATE")
-                'UPDATE L_TAG
-                For intX = 0 To lstTag.Items.Count - 1
-                    FbCommand.CommandText = "SELECT COUNT(*) FROM L_TAG WHERE FK_DOCUMENTFILE_ID = '" & lblDocumentFileID.Text & "' AND FK_COLUMNNAME_ID = '" & lstTag.Items(intX).Text & "' "
-                    If FbCommand.ExecuteScalar = 1 Then
-                        FbSql = "UPDATE L_TAG SET TEXT = '" & lstTag.Items(intX).SubItems(2).Text & "' ,SECURITY_USER='" & LoggedUser & "' WHERE FK_DOCUMENTFILE_ID = '" & lblDocumentFileID.Text & "' AND FK_COLUMNNAME_ID = '" & lstTag.Items(intX).Text & "'"
-                        FbCommand.CommandText = FbSql
-                        FbCommand.ExecuteNonQuery()
-                    Else
-                        FbCommand.CommandText = "INSERT INTO L_TAG(FK_DOCUMENTFILE_ID,FK_COLUMNNAME_ID,SECURITY_USER,TEXT) VALUES ('" & lblDocumentFileID.Text & "','" & lstTag.Items(intX).SubItems(0).Text & "','" & LoggedUser & "','" & lstTag.Items(intX).SubItems(2).Text & "')"
-
-                        FbCommand.ExecuteNonQuery()
-                    End If
+                If Microsoft.VisualBasic.Right(axDocument.src, 10) = "v13w3$.tmp" Then
+                    'UPDATE PDF PROPERTIES AND NOTE
+                    FbSql = "UPDATE C_DOCUMENTFILE SET NOTE='" & txtNote.Text & "',SECURITY_USER='" & LoggedUser & "' WHERE DOCUMENTFILE_ID = '" & lblDocumentFileID.Text & "' "
+                    FbCommand.CommandText = FbSql
+                    FbCommand.ExecuteNonQuery()
                     Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "UPDATE")
-                Next
-                'UPDATE C_ATTACHMENT
-                'DELETE OF ATTACHMENT NOT IN LSTATTACHMENT
-                Dim Attachment_checker As Boolean = False
-                Dim Attachment_array(100) As String
-                Dim CounterArray As Integer = 0
-                FbSql = "SELECT * FROM C_ATTACHMENT WHERE FK_DOCUMENTFILE_ID = '" & lblDocumentFileID.Text & "' "
-                FbCommand.CommandText = FbSql
-                FBreader = FbCommand.ExecuteReader()
-                'READ ALL THE CONTENTS OF LISTVIEW AND COMPARE THEM WITH ATTACHMENT_ID
-                While FBreader.Read
-                    Attachment_checker = False
-                    For intX = 0 To lstAttachment.Items.Count - 1
-                        If FBreader!ATTACHMENT_ID.ToString = lstAttachment.Items(intX).Text Then
-                            Attachment_checker = True
+                    'UPDATE L_TAG
+                    For intX = 0 To lstTag.Items.Count - 1
+                        FbCommand.CommandText = "SELECT COUNT(*) FROM L_TAG WHERE FK_DOCUMENTFILE_ID = '" & lblDocumentFileID.Text & "' AND FK_COLUMNNAME_ID = '" & lstTag.Items(intX).Text & "' "
+                        If FbCommand.ExecuteScalar = 1 Then
+                            FbSql = "UPDATE L_TAG SET TEXT = '" & lstTag.Items(intX).SubItems(2).Text & "' ,SECURITY_USER='" & LoggedUser & "' WHERE FK_DOCUMENTFILE_ID = '" & lblDocumentFileID.Text & "' AND FK_COLUMNNAME_ID = '" & lstTag.Items(intX).Text & "'"
+                            FbCommand.CommandText = FbSql
+                            FbCommand.ExecuteNonQuery()
+                        Else
+                            FbCommand.CommandText = "INSERT INTO L_TAG(FK_DOCUMENTFILE_ID,FK_COLUMNNAME_ID,SECURITY_USER,TEXT) VALUES ('" & lblDocumentFileID.Text & "','" & lstTag.Items(intX).SubItems(0).Text & "','" & LoggedUser & "','" & lstTag.Items(intX).SubItems(2).Text & "')"
 
+                            FbCommand.ExecuteNonQuery()
+                        End If
+                        Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "UPDATE")
+                    Next
+                    'UPDATE C_ATTACHMENT
+                    'DELETE OF ATTACHMENT NOT IN LSTATTACHMENT
+                    Dim Attachment_checker As Boolean = False
+                    Dim Attachment_array(100) As String
+                    Dim CounterArray As Integer = 0
+                    FbSql = "SELECT * FROM C_ATTACHMENT WHERE FK_DOCUMENTFILE_ID = '" & lblDocumentFileID.Text & "' "
+                    FbCommand.CommandText = FbSql
+                    FBreader = FbCommand.ExecuteReader()
+                    'READ ALL THE CONTENTS OF LISTVIEW AND COMPARE THEM WITH ATTACHMENT_ID
+                    While FBreader.Read
+                        Attachment_checker = False
+                        For intX = 0 To lstAttachment.Items.Count - 1
+                            If FBreader!ATTACHMENT_ID.ToString = lstAttachment.Items(intX).Text Then
+                                Attachment_checker = True
+
+                            End If
+                        Next
+                        If Attachment_checker = False Then
+                            Attachment_array(CounterArray) = FBreader!ATTACHMENT_ID.ToString
+                            CounterArray = CounterArray + 1
+                        End If
+                    End While
+                    FBreader.Close()
+
+                    For Each value In Attachment_array
+                        If value <> Nothing Then
+
+                            FbSql = "DELETE FROM C_ATTACHMENT WHERE ATTACHMENT_ID = '" & value & "' "
+                            FbCommand.CommandText = FbSql
+                            FbCommand.ExecuteNonQuery()
+                            Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "UPDATE")
                         End If
                     Next
-                    If Attachment_checker = False Then
-                        Attachment_array(CounterArray) = FBreader!ATTACHMENT_ID.ToString
-                        CounterArray = CounterArray + 1
-                    End If
-                End While
-                FBreader.Close()
-
-                For Each value In Attachment_array
-                    If value <> Nothing Then
-
-                        FbSql = "DELETE FROM C_ATTACHMENT WHERE ATTACHMENT_ID = '" & value & "' "
-                        FbCommand.CommandText = FbSql
-                        FbCommand.ExecuteNonQuery()
-                            Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "UPDATE")
-                    End If
-                Next
 
                     'INSERT NEW ATTACHMENT WITH PATH <> NULL
                     modFunction.SystemStatus("Updating attachment")
-                For intx = 0 To lstAttachment.Items.Count - 1
-                    If lstAttachment.Items(intx).SubItems(1).Text <> "" Then
+                    For intx = 0 To lstAttachment.Items.Count - 1
+                        If lstAttachment.Items(intx).SubItems(1).Text <> "" Then
 
-                        FS = New FileStream(lstAttachment.Items(intx).SubItems(1).Text, FileMode.OpenOrCreate, FileAccess.Read)
-                        RawData = New Byte((FS.Length) - 1) {}
-                        FS.Read(RawData, 0, FS.Length)
-                        FS.Close()
-                        'Dim StreamFile As New FileStream(lstAttachment.Items(intx).SubItems(1).Text, FileMode.OpenOrCreate, FileAccess.Read)
+                            FS = New FileStream(lstAttachment.Items(intx).SubItems(1).Text, FileMode.OpenOrCreate, FileAccess.Read)
+                            RawData = New Byte((FS.Length) - 1) {}
+                            FS.Read(RawData, 0, FS.Length)
+                            FS.Close()
+                            'Dim StreamFile As New FileStream(lstAttachment.Items(intx).SubItems(1).Text, FileMode.OpenOrCreate, FileAccess.Read)
 
-                        'Dim mydata() As Byte = New Byte((FS.Length) - 1) {}
-                        'FS.Read(mydata, 0, FS.Length)
-                        'FS.Close()
+                            'Dim mydata() As Byte = New Byte((FS.Length) - 1) {}
+                            'FS.Read(mydata, 0, FS.Length)
+                            'FS.Close()
 
 
 
-                        FbCommand.Parameters.Clear()
-                        FbSql = "INSERT INTO C_ATTACHMENT(ATTACHMENT_ID,BLOBATTACHMENT,FILENAME,FILETYPE,FK_DOCUMENTFILE_ID,SECURITY_USER) VALUES (?,?,?,?,?,?)"
-                        FbCommand.CommandText = FbSql
-                        FbCommand.Parameters.AddWithValue("@ATTACHMENT_ID", lstAttachment.Items(intx).SubItems(0).Text)
-                        FbCommand.Parameters.AddWithValue("@BLOBATTACHMENT", RawData)
-                        'FbCommand.Parameters.AddWithValue("@BLOBATTACHMENT", mydata)
-                        FbCommand.Parameters.AddWithValue("@FILENAME", lstAttachment.Items(intx).SubItems(2).Text)
-                        FbCommand.Parameters.AddWithValue("@FILETYPE", lstAttachment.Items(intx).SubItems(3).Text)
-                        FbCommand.Parameters.AddWithValue("@FK_DOCUMENTFILE_ID", lblDocumentFileID.Text)
-                        FbCommand.Parameters.AddWithValue("@SECURITY_USER", LoggedUser)
-                        FbCommand.ExecuteNonQuery()
+                            FbCommand.Parameters.Clear()
+                            FbSql = "INSERT INTO C_ATTACHMENT(ATTACHMENT_ID,BLOBATTACHMENT,FILENAME,FILETYPE,FK_DOCUMENTFILE_ID,SECURITY_USER) VALUES (?,?,?,?,?,?)"
+                            FbCommand.CommandText = FbSql
+                            FbCommand.Parameters.AddWithValue("@ATTACHMENT_ID", lstAttachment.Items(intx).SubItems(0).Text)
+                            FbCommand.Parameters.AddWithValue("@BLOBATTACHMENT", RawData)
+                            'FbCommand.Parameters.AddWithValue("@BLOBATTACHMENT", mydata)
+                            FbCommand.Parameters.AddWithValue("@FILENAME", lstAttachment.Items(intx).SubItems(2).Text)
+                            FbCommand.Parameters.AddWithValue("@FILETYPE", lstAttachment.Items(intx).SubItems(3).Text)
+                            FbCommand.Parameters.AddWithValue("@FK_DOCUMENTFILE_ID", lblDocumentFileID.Text)
+                            FbCommand.Parameters.AddWithValue("@SECURITY_USER", LoggedUser)
+                            FbCommand.ExecuteNonQuery()
                             Call AuditLog("INSERT INTO C_ATTACHMENT(ATTACHMENT_ID,BLOBATTACHMENT,FILENAME,FILETYPE,FK_DOCUMENTFILE_ID,SECURITY_USER) VALUES (" & lstAttachment.Items(intx).SubItems(0).Text & ",BLOB," & lstAttachment.Items(intx).SubItems(2).Text & "," & lstAttachment.Items(intx).SubItems(3).Text & "," & lblDocumentFileID.Text & "," & LoggedUser & ")", TransactionNumber, "UPDATE")
-                    End If
-                Next
-                '''''''''''''''''''''
-                'INSERT NEW PDF FILE'
-                '''''''''''''''''''''
+                        End If
+                    Next
+                    '''''''''''''''''''''
+                    'INSERT NEW PDF FILE'
+                    '''''''''''''''''''''
 
-            Else
-                'INSERT PDF/BLOB FILE
-                FS = New FileStream(PDFFileInfo.FullName.ToString, FileMode.OpenOrCreate, FileAccess.Read)
-                RawData = New Byte((FS.Length) - 1) {}
-                FS.Read(RawData, 0, FS.Length)
-                FS.Close()
+                Else
+                    'INSERT PDF/BLOB FILE
+                    FS = New FileStream(PDFFileInfo.FullName.ToString, FileMode.OpenOrCreate, FileAccess.Read)
+                    RawData = New Byte((FS.Length) - 1) {}
+                    FS.Read(RawData, 0, FS.Length)
+                    FS.Close()
                     FS.Dispose()
 
                     ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -299,120 +323,121 @@ Public Class frmDocument
 
 
                     modFunction.SystemStatus("Updating document file")
-                FbCommand.Parameters.Clear()
-                    FbCommand.CommandText = "INSERT INTO C_DOCUMENTFILE(DOCUMENTFILE_ID,BLOBFILE,FILENAME,FILESIZE,FK_DOCUMENT_ID,SECURITY_USER,NOTE,OCR) VALUES (?,?,?,?,?,?,?,?)"
-                'GUIDDOCFILE = CreateGuid("DocumentFile")
-                FbCommand.Parameters.AddWithValue("@DOCUMENTFILE_ID", lblDocumentFileID.Text)
-                FbCommand.Parameters.AddWithValue("@BLOBFILE", RawData)
-                FbCommand.Parameters.AddWithValue("@FILENAME", lblFileName.Text)
-                FbCommand.Parameters.AddWithValue("@FILESIZE", Format(PDFFileInfo.Length / 1024, "0.00"))
-                FbCommand.Parameters.AddWithValue("@FK_DOCUMENT_ID", lblID.Text)
-                FbCommand.Parameters.AddWithValue("@SECURITY_USER", LoggedUser)
+                    FbCommand.Parameters.Clear()
+                    FbCommand.CommandText = "INSERT INTO C_DOCUMENTFILE(DOCUMENTFILE_ID,BLOBFILE,FILENAME,FILESIZE,FK_DOCUMENT_ID,SECURITY_USER,NOTE,OCR,DOCHASH) VALUES (?,?,?,?,?,?,?,?,?)"
+                    'GUIDDOCFILE = CreateGuid("DocumentFile")
+                    FbCommand.Parameters.AddWithValue("@DOCUMENTFILE_ID", lblDocumentFileID.Text)
+                    FbCommand.Parameters.AddWithValue("@BLOBFILE", RawData)
+                    FbCommand.Parameters.AddWithValue("@FILENAME", lblFileName.Text)
+                    FbCommand.Parameters.AddWithValue("@FILESIZE", Format(PDFFileInfo.Length / 1024, "0.00"))
+                    FbCommand.Parameters.AddWithValue("@FK_DOCUMENT_ID", lblID.Text)
+                    FbCommand.Parameters.AddWithValue("@SECURITY_USER", LoggedUser)
                     FbCommand.Parameters.AddWithValue("@NOTE", txtNote.Text)
                     FbCommand.Parameters.AddWithValue("@OCR", OCRbyte)
-                FbCommand.ExecuteNonQuery()
-                'Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "INSERT")
+                    FbCommand.Parameters.AddWithValue("@DOCHASH", MD5hashvalue)
+                    FbCommand.ExecuteNonQuery()
+                    'Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "INSERT")
                     'Call AuditLog("INSERT INTO C_DOCUMENTFILE(DOCUMENTFILE_ID,BLOBFILE,FILENAME,FILESIZE,FK_DOCUMENT_ID,SECURITY_USER,NOTE) VALUES(" & lblDocumentFileID.Text & ",BLOB," & lblFileName.Text & "," & Format(PDFFileInfo.Length / 1024, "0.00") & "," & GuidID & "," & LoggedUser & "," & txtNote.Text & ")", TransactionNumber, "INSERT")
                     Call AuditLog("INSERT INTO C_DOCUMENTFILE(DOCUMENTFILE_ID,BLOBFILE,FILENAME,FILESIZE,FK_DOCUMENT_ID,SECURITY_USER,NOTE,OCR) VALUES(" & lblDocumentFileID.Text & ",BLOB," & lblFileName.Text & "," & Format(PDFFileInfo.Length / 1024, "0.00") & "," & GuidID & "," & LoggedUser & "," & txtNote.Text & ",BLOB)", TransactionNumber, "UPDATE")
 
                     'INSERT INTO L_TAG TABLE
                     modFunction.SystemStatus("Updating index")
-                For counterX = 0 To lstTag.Items.Count - 1
-                    'If lstTag.Items(counterX).SubItems(2).Text <> "" Then
-                    FbSql = "INSERT INTO L_TAG(FK_DOCUMENTFILE_ID,FK_COLUMNNAME_ID,SECURITY_USER,TEXT) VALUES ('" & lblDocumentFileID.Text & "','" & lstTag.Items(counterX).SubItems(0).Text & "','" & LoggedUser & "','" & lstTag.Items(counterX).SubItems(2).Text & "')"
-                    FbCommand.CommandText = FbSql
-                    FbCommand.ExecuteNonQuery()
+                    For counterX = 0 To lstTag.Items.Count - 1
+                        'If lstTag.Items(counterX).SubItems(2).Text <> "" Then
+                        FbSql = "INSERT INTO L_TAG(FK_DOCUMENTFILE_ID,FK_COLUMNNAME_ID,SECURITY_USER,TEXT) VALUES ('" & lblDocumentFileID.Text & "','" & lstTag.Items(counterX).SubItems(0).Text & "','" & LoggedUser & "','" & lstTag.Items(counterX).SubItems(2).Text & "')"
+                        FbCommand.CommandText = FbSql
+                        FbCommand.ExecuteNonQuery()
                         Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "UPDATE")
-                    'End If
-                Next
+                        'End If
+                    Next
 
-                'DELETE ATTACHMENT NOT IN LISTVIEW
+                    'DELETE ATTACHMENT NOT IN LISTVIEW
 
-                Dim FBdatatable As New DataTable
-                'Dim DBDataAdapter As New OdbcDataAdapter
+                    Dim FBdatatable As New DataTable
+                    'Dim DBDataAdapter As New OdbcDataAdapter
                     '''''''''''''''
                     modFunction.SystemStatus("Updating attachment")
-                FBdatatable.Columns.Add("BLOBATTACHMENT", System.Type.GetType("System.Byte[]"))
-                FBdatatable.Columns.Add("FILENAME", GetType(String))
-                FBdatatable.Columns.Add("FILETYPE", GetType(String))
-                'INSERT CURRENT ATTACHMENTS TO DATATABE ELSE
-                'INSERT TO DATABASE
-                For intZ = 0 To lstAttachment.Items.Count - 1
-                    If lstAttachment.Items(intZ).SubItems(1).Text = "" Then
-                        FbSql = "SELECT * FROM C_ATTACHMENT WHERE ATTACHMENT_ID = '" & lstAttachment.Items(intZ).Text & "' "
-                        FbCommand.CommandText = FbSql
-                        FBreader = FbCommand.ExecuteReader
-                        FBreader.Read()
-                        FBdatatable.Rows.Add(FBreader!BLOBATTACHMENT, FBreader!FILENAME.ToString, FBreader!FILETYPE.ToString)
-                        FBreader.Close()
+                    FBdatatable.Columns.Add("BLOBATTACHMENT", System.Type.GetType("System.Byte[]"))
+                    FBdatatable.Columns.Add("FILENAME", GetType(String))
+                    FBdatatable.Columns.Add("FILETYPE", GetType(String))
+                    'INSERT CURRENT ATTACHMENTS TO DATATABE ELSE
+                    'INSERT TO DATABASE
+                    For intZ = 0 To lstAttachment.Items.Count - 1
+                        If lstAttachment.Items(intZ).SubItems(1).Text = "" Then
+                            FbSql = "SELECT * FROM C_ATTACHMENT WHERE ATTACHMENT_ID = '" & lstAttachment.Items(intZ).Text & "' "
+                            FbCommand.CommandText = FbSql
+                            FBreader = FbCommand.ExecuteReader
+                            FBreader.Read()
+                            FBdatatable.Rows.Add(FBreader!BLOBATTACHMENT, FBreader!FILENAME.ToString, FBreader!FILETYPE.ToString)
+                            FBreader.Close()
 
-                    Else
-                        'NEW ATTACHMENTS
-                        FS = New FileStream(lstAttachment.Items(intZ).SubItems(1).Text, FileMode.OpenOrCreate, FileAccess.Read)
-                        RawData = New Byte((FS.Length) - 1) {}
-                        FS.Read(RawData, 0, FS.Length)
-                        FS.Close()
+                        Else
+                            'NEW ATTACHMENTS
+                            FS = New FileStream(lstAttachment.Items(intZ).SubItems(1).Text, FileMode.OpenOrCreate, FileAccess.Read)
+                            RawData = New Byte((FS.Length) - 1) {}
+                            FS.Read(RawData, 0, FS.Length)
+                            FS.Close()
 
 
+                            FbCommand.Parameters.Clear()
+                            FbSql = "INSERT INTO C_ATTACHMENT(ATTACHMENT_ID,BLOBATTACHMENT,FILENAME,FILETYPE,FK_DOCUMENTFILE_ID,SECURITY_USER) VALUES (?,?,?,?,?,?)"
+                            FbCommand.CommandText = FbSql
+                            FbCommand.Parameters.AddWithValue("@ATTACHMENT_ID", lstAttachment.Items(intZ).SubItems(0).Text)
+                            FbCommand.Parameters.AddWithValue("@BLOBATTACHMENT", RawData)
+                            FbCommand.Parameters.AddWithValue("@FILENAME", lstAttachment.Items(intZ).SubItems(2).Text)
+                            FbCommand.Parameters.AddWithValue("@FILETYPE", lstAttachment.Items(intZ).SubItems(3).Text)
+                            FbCommand.Parameters.AddWithValue("@FK_DOCUMENTFILE_ID", lblDocumentFileID.Text)
+                            FbCommand.Parameters.AddWithValue("@SECURITY_USER", LoggedUser)
+                            FbCommand.ExecuteNonQuery()
+
+                            'Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "INSERT")
+                            Call AuditLog("INSERT INTO C_ATTACHMENT(ATTACHMENT_ID,BLOBATTACHMENT,FILENAME,FILETYPE,FK_DOCUMENTFILE_ID,SECURITY_USER) VALUES (" & lstAttachment.Items(intZ).SubItems(0).Text & ",BLOB," & lstAttachment.Items(intZ).SubItems(2).Text & "," & lstAttachment.Items(intZ).SubItems(3).Text & "," & lblDocumentFileID.Text & "," & LoggedUser & ")", TransactionNumber, "UPDATE")
+                        End If
+
+                    Next
+                    'INSERT ATTACHMENTS FROM DATATABLE
+                    Dim intB As Integer = 0
+                    Dim GUIDATTACHMENT As String
+                    GUIDATTACHMENT = CreateGuid("Attachment")
+                    For Each qrow In FBdatatable.Rows
                         FbCommand.Parameters.Clear()
                         FbSql = "INSERT INTO C_ATTACHMENT(ATTACHMENT_ID,BLOBATTACHMENT,FILENAME,FILETYPE,FK_DOCUMENTFILE_ID,SECURITY_USER) VALUES (?,?,?,?,?,?)"
                         FbCommand.CommandText = FbSql
-                        FbCommand.Parameters.AddWithValue("@ATTACHMENT_ID", lstAttachment.Items(intZ).SubItems(0).Text)
-                        FbCommand.Parameters.AddWithValue("@BLOBATTACHMENT", RawData)
-                        FbCommand.Parameters.AddWithValue("@FILENAME", lstAttachment.Items(intZ).SubItems(2).Text)
-                        FbCommand.Parameters.AddWithValue("@FILETYPE", lstAttachment.Items(intZ).SubItems(3).Text)
+                        GUIDATTACHMENT = CreateGuid("Attachment")
+                        FbCommand.Parameters.AddWithValue("@ATTACHMENT_ID", GUIDATTACHMENT)
+                        FbCommand.Parameters.AddWithValue("@BLOBATTACHMENT", qrow("BLOBATTACHMENT"))
+                        FbCommand.Parameters.AddWithValue("@FILENAME", qrow("FILENAME"))
+                        FbCommand.Parameters.AddWithValue("@FILETYPE", qrow("FILETYPE"))
                         FbCommand.Parameters.AddWithValue("@FK_DOCUMENTFILE_ID", lblDocumentFileID.Text)
                         FbCommand.Parameters.AddWithValue("@SECURITY_USER", LoggedUser)
                         FbCommand.ExecuteNonQuery()
-
                         'Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "INSERT")
-                            Call AuditLog("INSERT INTO C_ATTACHMENT(ATTACHMENT_ID,BLOBATTACHMENT,FILENAME,FILETYPE,FK_DOCUMENTFILE_ID,SECURITY_USER) VALUES (" & lstAttachment.Items(intZ).SubItems(0).Text & ",BLOB," & lstAttachment.Items(intZ).SubItems(2).Text & "," & lstAttachment.Items(intZ).SubItems(3).Text & "," & lblDocumentFileID.Text & "," & LoggedUser & ")", TransactionNumber, "UPDATE")
-                    End If
-
-                Next
-                'INSERT ATTACHMENTS FROM DATATABLE
-                Dim intB As Integer = 0
-                Dim GUIDATTACHMENT As String
-                GUIDATTACHMENT = CreateGuid("Attachment")
-                For Each qrow In FBdatatable.Rows
-                    FbCommand.Parameters.Clear()
-                    FbSql = "INSERT INTO C_ATTACHMENT(ATTACHMENT_ID,BLOBATTACHMENT,FILENAME,FILETYPE,FK_DOCUMENTFILE_ID,SECURITY_USER) VALUES (?,?,?,?,?,?)"
-                    FbCommand.CommandText = FbSql
-                    GUIDATTACHMENT = CreateGuid("Attachment")
-                    FbCommand.Parameters.AddWithValue("@ATTACHMENT_ID", GUIDATTACHMENT)
-                    FbCommand.Parameters.AddWithValue("@BLOBATTACHMENT", qrow("BLOBATTACHMENT"))
-                    FbCommand.Parameters.AddWithValue("@FILENAME", qrow("FILENAME"))
-                    FbCommand.Parameters.AddWithValue("@FILETYPE", qrow("FILETYPE"))
-                    FbCommand.Parameters.AddWithValue("@FK_DOCUMENTFILE_ID", lblDocumentFileID.Text)
-                    FbCommand.Parameters.AddWithValue("@SECURITY_USER", LoggedUser)
-                    FbCommand.ExecuteNonQuery()
-                    'Call AuditLog(FbCommand.CommandText.ToString, TransactionNumber, "INSERT")
                         Call AuditLog("INSERT INTO C_ATTACHMENT(ATTACHMENT_ID,BLOBATTACHMENT,FILENAME,FILETYPE,FK_DOCUMENTFILE_ID,SECURITY_USER) VALUES (" & GUIDATTACHMENT & ",BLOB," & qrow("FILENAME") & "," & qrow("FILETYPE") & "," & lblDocumentFileID.Text & "," & LoggedUser & ")", TransactionNumber, "UPDATE")
-                Next
+                    Next
 
 
 
-                'For intX = 0 To lstAttachment.Items.Count - 1
-                '    FS = New FileStream(lstAttachment.Items(intX).SubItems(1).Text, FileMode.Open, FileAccess.Read)
-                '    RawData = New Byte(FS.Length) {}
-                '    FS.Read(RawData, 0, FS.Length)
-                '    FS.Close()
+                    'For intX = 0 To lstAttachment.Items.Count - 1
+                    '    FS = New FileStream(lstAttachment.Items(intX).SubItems(1).Text, FileMode.Open, FileAccess.Read)
+                    '    RawData = New Byte(FS.Length) {}
+                    '    FS.Read(RawData, 0, FS.Length)
+                    '    FS.Close()
 
-                '    FbCommand.Parameters.Clear()
-                '    FbSql = "INSERT INTO C_ATTACHMENT(ATTACHMENT_ID,BLOBATTACHMENT,FILENAME,FILETYPE,FK_DOCUMENTFILE_ID,SECURITY_USER) VALUES (?,?,?,?,?,?)"
-                '    FbCommand.CommandText = FbSql
-                '    FbCommand.Parameters.AddWithValue("@ATTACHMENT_ID", lstAttachment.Items(intX).SubItems(0).Text)
-                '    FbCommand.Parameters.AddWithValue("@BLOBATTACHMENT", RawData)
-                '    FbCommand.Parameters.AddWithValue("@FILENAME", lstAttachment.Items(intX).SubItems(2).Text)
-                '    FbCommand.Parameters.AddWithValue("@FILETYPE", lstAttachment.Items(intX).SubItems(3).Text)
-                '    FbCommand.Parameters.AddWithValue("@FK_DOCUMENTFILE_ID", GUIDDOCFILE)
-                '    FbCommand.Parameters.AddWithValue("@SECURITY_USER", LoggedUser)
-                '    FbCommand.ExecuteNonQuery()
-                'Next
+                    '    FbCommand.Parameters.Clear()
+                    '    FbSql = "INSERT INTO C_ATTACHMENT(ATTACHMENT_ID,BLOBATTACHMENT,FILENAME,FILETYPE,FK_DOCUMENTFILE_ID,SECURITY_USER) VALUES (?,?,?,?,?,?)"
+                    '    FbCommand.CommandText = FbSql
+                    '    FbCommand.Parameters.AddWithValue("@ATTACHMENT_ID", lstAttachment.Items(intX).SubItems(0).Text)
+                    '    FbCommand.Parameters.AddWithValue("@BLOBATTACHMENT", RawData)
+                    '    FbCommand.Parameters.AddWithValue("@FILENAME", lstAttachment.Items(intX).SubItems(2).Text)
+                    '    FbCommand.Parameters.AddWithValue("@FILETYPE", lstAttachment.Items(intX).SubItems(3).Text)
+                    '    FbCommand.Parameters.AddWithValue("@FK_DOCUMENTFILE_ID", GUIDDOCFILE)
+                    '    FbCommand.Parameters.AddWithValue("@SECURITY_USER", LoggedUser)
+                    '    FbCommand.ExecuteNonQuery()
+                    'Next
 
-                FBdatatable.Clear()
+                    FBdatatable.Clear()
 
-            End If
+                End If
 
 
 

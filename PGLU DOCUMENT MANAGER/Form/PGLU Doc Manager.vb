@@ -181,9 +181,9 @@ Public Class PGLU_Doc_Manager
                 FbSql = "SELECT   DOCUMENT_ID,DESCRIPTION,C_DOCUMENTFILE.NOTE,C_DOCUMENT.SECURITY_USER,C_DOCUMENTFILE.TRANSDATE,L_TAG.TEXT,C_DOCUMENTFILE.DOCUMENTFILE_ID " _
                     & "FROM C_DOCUMENT JOIN C_DOCUMENTFILE ON C_DOCUMENT.DOCUMENT_ID = C_DOCUMENTFILE.FK_DOCUMENT_ID JOIN " _
                     & "S_COLUMNGROUP ON C_DOCUMENT.FK_COLUMNGROUP_ID = S_COLUMNGROUP.COLUMNGROUP_ID JOIN L_TAG ON " _
-                    & "C_DOCUMENTFILE.DOCUMENTFILE_ID = L_TAG.FK_DOCUMENTFILE_ID WHERE (L_TAG.TEXT LIKE '" & txtSearch.Text & "%' " _
+                    & "C_DOCUMENTFILE.DOCUMENTFILE_ID = L_TAG.FK_DOCUMENTFILE_ID WHERE (L_TAG.TEXT LIKE '%" & txtSearch.Text & "%' " _
                     & "OR S_COLUMNGROUP.DESCRIPTION LIKE '%" & txtSearch.Text & "%' OR C_DOCUMENTFILE.NOTE LIKE '%" & txtSearch.Text & "%' OR " _
-                    & "C_DOCUMENTFILE.SECURITY_USER LIKE '" & txtSearch.Text & "%') AND S_COLUMNGROUP.COLUMNGROUP_ID IN " _
+                    & "C_DOCUMENTFILE.SECURITY_USER LIKE '%" & txtSearch.Text & "%' OR DOCUMENTFILE_ID LIKE '%" & txtSearch.Text & "%' OR DOCUMENT_ID LIKE '%" & txtSearch.Text & "%') AND S_COLUMNGROUP.COLUMNGROUP_ID IN " _
                     & "(SELECT FK_COLUMNGROUP_ID FROM L_COLUMNSECURITY WHERE FK_SECURITY_GROUP = '" & Security_Group & "') ORDER BY DOCUMENT_ID,transdate DESC"
             End If
             FbCommand.Connection = FbConnection
@@ -191,11 +191,20 @@ Public Class PGLU_Doc_Manager
             FbReader = FbCommand.ExecuteReader
             Dim counterX As Integer = 0
             Dim docfileid As String = Nothing
+            Dim TagText As String
             While FbReader.Read
                 If counterX <> 0 Then
                     If FbReader!DOCUMENT_ID.ToString = lstSearch.Items(counterX - 1).Text Then
                         If FbReader!text.ToString <> "" And docfileid = FbReader!DOCUMENTFILE_ID.ToString Then
-                            lstSearch.Items(counterX - 1).SubItems(3).Text = lstSearch.Items(counterX - 1).SubItems(3).Text & " | " & FbReader!TEXT.ToString
+                            If lstSearch.Items(counterX - 1).SubItems(3).Text <> "" Then
+                                lstSearch.Items(counterX - 1).SubItems(3).Text = lstSearch.Items(counterX - 1).SubItems(3).Text & " | " & FbReader!TEXT.ToString
+                            Else
+                                lstSearch.Items(counterX - 1).SubItems(3).Text = FbReader!TEXT.ToString
+                            End If
+
+
+
+
                         End If
 
                     Else
@@ -209,6 +218,8 @@ Public Class PGLU_Doc_Manager
                         counterX = counterX + 1
                         docfileid = FbReader!DOCUMENTFILE_ID.ToString
                     End If
+                   
+                    
                 Else
                     LVitem = New ListViewItem(FbReader!DOCUMENT_ID.ToString)
                     LVitem.SubItems.Add(FbReader!DESCRIPTION.ToString)
@@ -220,7 +231,9 @@ Public Class PGLU_Doc_Manager
                     counterX = counterX + 1
                     docfileid = FbReader!DOCUMENTFILE_ID.ToString
                 End If
+               
 
+                
             End While
 
             'Dim intZ As Integer = 0
@@ -723,6 +736,8 @@ Public Class PGLU_Doc_Manager
         frmSplash.Close()
         Me.Text = My.Application.Info.Title.ToString & " v" & My.Application.Info.Version.ToString
         modFunction.SystemStatus("Log in")
+        frmLogin.txtpassword.Text = Nothing
+        frmLogin.txtuser.Text = Nothing
         frmLogin.ShowDialog()
         modFunction.SystemStatus()
     End Sub
