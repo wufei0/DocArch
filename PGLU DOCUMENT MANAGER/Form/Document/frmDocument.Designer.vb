@@ -44,6 +44,7 @@ Partial Class frmDocument
         Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader12 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.cmsIndex = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.cmsIndex_Insert = New System.Windows.Forms.ToolStripMenuItem()
         Me.cmsIndex_Delete = New System.Windows.Forms.ToolStripMenuItem()
@@ -78,7 +79,7 @@ Partial Class frmDocument
         Me.btnPrint = New System.Windows.Forms.Button()
         Me.btnRollback = New System.Windows.Forms.Button()
         Me.fbAttachment = New System.Windows.Forms.FolderBrowserDialog()
-        Me.ColumnHeader12 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader14 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         CType(Me.axDocument, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.TabDocument.SuspendLayout()
@@ -287,6 +288,11 @@ Partial Class frmDocument
         Me.ColumnHeader9.Text = "Text"
         Me.ColumnHeader9.Width = 120
         '
+        'ColumnHeader12
+        '
+        Me.ColumnHeader12.Text = "Description"
+        Me.ColumnHeader12.Width = 90
+        '
         'cmsIndex
         '
         Me.cmsIndex.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmsIndex_Insert, Me.cmsIndex_Delete})
@@ -329,7 +335,7 @@ Partial Class frmDocument
         'lstAttachment
         '
         Me.lstAttachment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lstAttachment.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader4, Me.ColumnHeader2, Me.ColumnHeader3})
+        Me.lstAttachment.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader4, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader14})
         Me.lstAttachment.ContextMenuStrip = Me.cmsAttachment
         Me.lstAttachment.FullRowSelect = True
         Me.lstAttachment.GridLines = True
@@ -359,7 +365,6 @@ Partial Class frmDocument
         'ColumnHeader3
         '
         Me.ColumnHeader3.Text = "Filetype"
-        Me.ColumnHeader3.Width = 90
         '
         'cmsAttachment
         '
@@ -542,10 +547,10 @@ Partial Class frmDocument
         Me.btnRollback.UseVisualStyleBackColor = True
         Me.btnRollback.Visible = False
         '
-        'ColumnHeader12
+        'ColumnHeader14
         '
-        Me.ColumnHeader12.Text = "Description"
-        Me.ColumnHeader12.Width = 90
+        Me.ColumnHeader14.Text = "Date"
+        Me.ColumnHeader14.Width = 90
         '
         'frmDocument
         '
@@ -640,4 +645,5 @@ Partial Class frmDocument
     Friend WithEvents cmsIndex_Delete As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents cmsAttachment_Add As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ColumnHeader12 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader14 As System.Windows.Forms.ColumnHeader
 End Class

@@ -128,11 +128,11 @@
         AAAAAQAAAAAAAAAAAAAAAAwAAAAACgAA2BMAANgTAAAL
 </value>
   </data>
-  <metadata name="cmsIndex.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>412, 42</value>
-  </metadata>
   <metadata name="cmsAttachment.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 42</value>
+  </metadata>
+  <metadata name="cmsIndex.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>412, 42</value>
   </metadata>
   <metadata name="cmsHistory.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>243, 3</value>

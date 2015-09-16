@@ -71,6 +71,8 @@ Public Class frmDocument
         Dim OCRstring As String
         Dim stripper As PDFTextStripper
 
+        Dim MD5hashvalue As String
+        Dim hashcount As Integer
         ''''OCR END
 
         ''''GENERATE GUID FOR PRIMARY KEYS
@@ -93,17 +95,18 @@ Public Class frmDocument
             TransactionNumber = FbCommand.ExecuteScalar
 
             ''GET/CHECK HASH OF PDF FILE
-            Dim MD5hashvalue As String
-            Dim hashcount As Integer
-            MD5hashvalue = modFunction.GetHash(PDFFileInfo.FullName.ToString)
-            'MsgBox(MD5hashvalue)
-            FbCommand.CommandText = "SELECT COUNT(*) FROM C_DOCUMENTFILE WHERE DOCHASH LIKE '" & MD5hashvalue & "' "
-            hashcount = FbCommand.ExecuteScalar()
-            If hashcount > 0 Then
-                If MsgBox("File already exist in the database. Continue save?", MsgBoxStyle.Information + MsgBoxStyle.YesNo) = MsgBoxResult.No Then
-                    FBtransaction.Rollback()
-                    Exit Try
+            If Microsoft.VisualBasic.Right(axDocument.src, 10) <> "v13w3$.tmp" Then
 
+                MD5hashvalue = modFunction.GetHash(PDFFileInfo.FullName.ToString)
+                'MsgBox(MD5hashvalue)
+                FbCommand.CommandText = "SELECT COUNT(*) FROM C_DOCUMENTFILE WHERE DOCHASH LIKE '" & MD5hashvalue & "' "
+                hashcount = FbCommand.ExecuteScalar()
+                If hashcount > 0 Then
+                    If MsgBox("File already exist in the database. Continue save?", MsgBoxStyle.Information + MsgBoxStyle.YesNo) = MsgBoxResult.No Then
+                        FBtransaction.Rollback()
+                        Exit Try
+
+                    End If
                 End If
             End If
             ''FbSql = "SELECT * FROM C_DOCUMENTFILE WHERE DOCHASH = '" & MD5hashvalue & "' "
@@ -810,7 +813,7 @@ Public Class frmDocument
 
         Dim ofdAttachment As New OpenFileDialog
         Dim lviTEM As ListViewItem
-
+        Dim thisDay As DateTime = DateTime.Today
 
         ofdAttachment.Filter = "supported attachment file(image,pdf,document,spreadsheet)|*.pdf;*.jpg;*.jpeg;*.tif;*.doc;*.docx;*.xls;*.txt"
         ofdAttachment.FilterIndex = 1
@@ -830,6 +833,7 @@ Public Class frmDocument
 
                 lviTEM.SubItems.Add(ofdAttachment.SafeFileNames(x))
                 lviTEM.SubItems.Add(IO.Path.GetExtension(ofdAttachment.FileNames(x)))
+                lviTEM.SubItems.Add(Now)
                 lstAttachment.Items.Add(lviTEM)
 
             End If

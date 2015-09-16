@@ -456,6 +456,7 @@ Public Class PGLU_Doc_Manager
                     LVitem.SubItems.Add("")
                     LVitem.SubItems.Add(FBrecordset!FILENAME.ToString)
                     LVitem.SubItems.Add(FBrecordset!FILETYPE.ToString)
+                    LVitem.SubItems.Add(FBrecordset!TRANSDATE.ToString)
                     .lstAttachment.Items.Add(LVitem)
                 End While
                 FBrecordset.Close()
